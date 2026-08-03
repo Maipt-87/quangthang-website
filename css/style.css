@@ -672,10 +672,6 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
 .switch-row input { width: 18px; height: 18px; accent-color: var(--navy); }
 
 /* ============================== Responsive ============================ */
-@media (max-width: 1259px) {
-  /* Dưới mức này header không đủ chỗ cho cả slogan lẫn menu ngang */
-  .brand__slogan { display: none; }
-}
 
 @media (max-width: 1080px) {
   .footer__grid { grid-template-columns: 1fr 1fr; }
@@ -738,6 +734,10 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
   .nav__link::after { display: none; }
   .nav__link.is-active { color: var(--red); }
   .nav__actions .btn { display: none; }
+  /* Menu ngang và nút CTA đã nhường chỗ cho hamburger — thừa chỗ nên cho
+     slogan hiện rộng hơn lại, để mọi người truy cập bằng điện thoại/tablet
+     cũng thấy được slogan bên cạnh logo. */
+  .brand__slogan { display: flex; max-width: 200px; }
 }
 
 /* Man hinh rat hep (vi du iPhone SE 320px): dong email + hotline khong du
@@ -757,6 +757,7 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
   .quote-line { font-size: 1rem; padding-left: 1.1rem; }
   .kpi-grid { grid-template-columns: 1fr; }
   .brand img { height: 34px; }
+  .brand__slogan { max-width: clamp(96px, 38vw, 160px); padding-left: .6rem; }
   .hero { min-height: auto; }
   .hero__inner { padding: 3.6rem 0 5rem; }
   .hero__cta .btn { flex: 1 1 100%; }
