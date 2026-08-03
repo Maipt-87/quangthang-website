@@ -37,6 +37,10 @@
   --salmon-200: #f6c9b5;
   --salmon-50: #fdf5f1;
 
+  /* Melon/Peach — nền sáng cho topbar & footer, chữ đổi sang tối để đủ tương phản */
+  --peach: #f4b48c;
+  --peach-light: #f8cead;
+
   /* Phụ trợ ấm */
   --gold: #c6a46e;
   --amber: #f0cd8f;      /* chữ nhấn trên nền tối */
@@ -170,11 +174,11 @@ button { font-family: inherit; cursor: pointer; }
 .header.is-stuck { box-shadow: 0 6px 24px rgba(90, 74, 66, .10); }
 
 .topbar {
-  background: var(--navy-900); color: var(--red-400); font-size: .84rem;
+  background: var(--peach); color: var(--ink); font-size: .84rem;
 }
 .topbar__inner { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 40px; }
-.topbar a { color: var(--navy-100); }
-.topbar a:hover { color: #fff; }
+.topbar a { color: var(--navy-900); font-weight: 600; }
+.topbar a:hover { color: var(--red-600); }
 .topbar__list { display: flex; align-items: center; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
 .topbar__list li { display: inline-flex; align-items: center; gap: .45rem; }
 
@@ -243,22 +247,19 @@ button { font-family: inherit; cursor: pointer; }
   transform: scale(1.08); transition: opacity 1.3s var(--ease), transform 7s linear;
 }
 .hero__slide.is-active { opacity: 1; transform: scale(1); }
-.hero::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  /* Vệt phủ màu butter (mật ong-caramel) — sáng sủa, ấm hơn hẳn tông tím cũ,
-     vẫn đủ tối ở phía chữ (trái) để giữ chữ trắng dễ đọc. */
-  background: linear-gradient(100deg, rgba(110, 72, 24, .90) 0%, rgba(139, 97, 26, .70) 42%, rgba(196, 150, 60, .18) 100%);
-}
+/* THỬ NGHIỆM: bỏ lớp phủ gradient trên slide banner trang chủ, giữ đúng màu
+   ảnh gốc — chờ xác nhận trước khi commit. Dùng text-shadow + nền mờ sau
+   badge để chữ vẫn đọc rõ trên mọi ảnh nền thay vì phủ màu lên ảnh. */
 .hero__inner { position: relative; z-index: 2; padding: 5.5rem 0; max-width: 760px; }
 .hero__badge {
   display: inline-flex; align-items: center; gap: .6rem; padding: .5rem 1.05rem;
   border: 1px solid rgba(255, 255, 255, .28); border-radius: 100px;
-  background: rgba(255, 255, 255, .1); backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, .32); backdrop-filter: blur(6px);
   color: #fff; font-size: .82rem; font-weight: 600; letter-spacing: .04em; margin-bottom: 1.5rem;
 }
 .hero__badge b { color: var(--red-400); }
-.hero h1 { color: #fff; margin-bottom: 1.1rem; }
-.hero__desc { color: var(--navy-300); font-size: 1.1rem; max-width: 580px; margin-bottom: 2rem; }
+.hero h1 { color: #fff; margin-bottom: 1.1rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .6), 0 12px 34px rgba(0, 0, 0, .45); }
+.hero__desc { color: #fff; font-size: 1.1rem; max-width: 580px; margin-bottom: 2rem; text-shadow: 0 1px 5px rgba(0, 0, 0, .65), 0 8px 24px rgba(0, 0, 0, .45); }
 .hero__cta { display: flex; flex-wrap: wrap; gap: .85rem; }
 .hero__dots { position: absolute; bottom: 2.2rem; left: 0; right: 0; z-index: 3; display: flex; gap: .55rem; }
 .hero__dots button {
@@ -546,34 +547,27 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ------------------------------- Footer ------------------------------- */
 .footer {
-  /* Nền sáng hơn navy-900 một chút + dải gradient để khối logo tách bạch */
-  background: linear-gradient(180deg, var(--navy-700) 0%, var(--navy-800) 45%, var(--navy-900) 100%);
-  color: var(--red-400); padding-top: clamp(3rem, 5vw, 4.5rem); font-size: .94rem;
-  border-top: 4px solid var(--red-400);
+  /* Nền melon/peach sáng sủa thay cho khối tối trước đây */
+  background: linear-gradient(180deg, var(--peach-light) 0%, var(--peach) 100%);
+  color: var(--ink); padding-top: clamp(3rem, 5vw, 4.5rem); font-size: .94rem;
+  border-top: 4px solid var(--navy);
 }
-.footer h4 { color: #fff; font-size: 1rem; margin-bottom: 1.1rem; font-family: var(--font-display); }
-.footer a { color: var(--red-400); }
-.footer a:hover { color: #fff; }
+.footer h4 { color: var(--navy-900); font-size: 1rem; margin-bottom: 1.1rem; font-family: var(--font-display); }
+.footer a { color: var(--navy-800); }
+.footer a:hover { color: var(--red); }
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.3fr; gap: 2.2rem; padding-bottom: 2.5rem; }
 
-/* Giữ nguyên màu thật của logo (navy + đỏ) để không mất đặc điểm nhận diện
-   thương hiệu — thay vì khối nền trắng bọc quanh, dùng lớp glow trắng mờ dần
-   (nhiều drop-shadow chồng lớp) để logo vẫn nổi rõ trên nền tối, không viền. */
+/* Nền sáng nên logo hiển thị đúng màu thật (navy + đỏ), không cần lớp glow
+   trắng như trước — tương phản đã tốt sẵn trên nền melon/peach. */
 .footer__logo-plate { display: inline-block; margin-bottom: 1.2rem; }
-.footer__logo {
-  height: 46px; width: auto; display: block;
-  filter:
-    drop-shadow(0 0 1px rgba(255, 255, 255, .9))
-    drop-shadow(0 0 5px rgba(255, 255, 255, .55))
-    drop-shadow(0 0 12px rgba(255, 255, 255, .3));
-}
+.footer__logo { height: 46px; width: auto; display: block; }
 .footer__list { list-style: none; padding: 0; margin: 0; }
 .footer__list li { margin-bottom: .55rem; }
 .footer__contact li { display: flex; gap: .65rem; margin-bottom: .8rem; }
 .footer__contact span:first-child { flex-shrink: 0; opacity: .8; }
 .footer__bottom {
-  border-top: 1px solid rgba(255, 255, 255, .1); padding: 1.3rem 0; display: flex;
-  flex-wrap: wrap; gap: .8rem; justify-content: space-between; font-size: .87rem; color: var(--red-400);
+  border-top: 1px solid rgba(0, 0, 0, .12); padding: 1.3rem 0; display: flex;
+  flex-wrap: wrap; gap: .8rem; justify-content: space-between; font-size: .87rem; color: var(--navy-800);
 }
 
 /* ---------------------------- Nút nổi (FAB) --------------------------- */
