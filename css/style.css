@@ -510,15 +510,16 @@ button { font-family: inherit; cursor: pointer; }
 .news-card__meta time { font-weight: 600; }
 
 /* ------------------------------ Page hero ----------------------------- */
-.page-hero { position: relative; padding: clamp(3rem, 6vw, 5rem) 0; background: var(--navy-900); color: var(--navy-300); overflow: hidden; }
-.page-hero__bg { position: absolute; inset: 0; opacity: .3; background-size: cover; background-position: center; }
-.page-hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(95deg, rgba(110, 72, 24, .93), rgba(139, 97, 26, .58)); }
+/* Không phủ gradient màu lên ảnh — giữ đúng màu ảnh gốc cho sáng sủa, dùng
+   text-shadow để chữ trắng vẫn đọc rõ trên mọi ảnh nền thay vì làm tối ảnh. */
+.page-hero { position: relative; padding: clamp(3rem, 6vw, 5rem) 0; background: var(--navy-900); color: #fff; overflow: hidden; }
+.page-hero__bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
 .page-hero__inner { position: relative; z-index: 2; max-width: 720px; }
-.page-hero h1 { color: #fff; margin-bottom: .6rem; font-size: clamp(1.85rem, 3.6vw, 2.85rem); }
-.page-hero p { color: var(--navy-300); margin: 0; font-size: 1.04rem; }
-.breadcrumb { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; padding: 0; margin: 0 0 1rem; font-size: .85rem; color: var(--red-400); }
-.breadcrumb a { color: var(--navy-100); }
-.breadcrumb li + li::before { content: '/'; margin-right: .45rem; color: #c15a3f; }
+.page-hero h1 { color: #fff; margin-bottom: .6rem; font-size: clamp(1.85rem, 3.6vw, 2.85rem); text-shadow: 0 2px 6px rgba(0, 0, 0, .55), 0 10px 30px rgba(0, 0, 0, .4); }
+.page-hero p { color: #fff; margin: 0; font-size: 1.04rem; text-shadow: 0 1px 4px rgba(0, 0, 0, .6), 0 8px 22px rgba(0, 0, 0, .4); }
+.breadcrumb { display: flex; flex-wrap: wrap; gap: .45rem; list-style: none; padding: 0; margin: 0 0 1rem; font-size: .85rem; color: #fff; text-shadow: 0 1px 4px rgba(0, 0, 0, .6); }
+.breadcrumb a { color: #fff; }
+.breadcrumb li + li::before { content: '/'; margin-right: .45rem; color: #fff; opacity: .75; }
 
 /* -------------------------------- CTA --------------------------------- */
 .cta-band {
