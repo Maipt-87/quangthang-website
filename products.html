@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sản phẩm hương liệu — Quang Thắng Co.,Ltd</title>
+<meta name="description" content="Danh mục hương liệu mỹ phẩm, hương liệu thực phẩm, hương không gian và nguyên liệu hương gốc của hãng Givaudan do Quang Thắng phân phối.">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="canonical" href="https://maipt-87.github.io/quangthang-website/products.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Quang Thắng Co.,Ltd">
+<meta property="og:locale" content="vi_VN">
+<meta property="og:url" content="https://maipt-87.github.io/quangthang-website/products.html">
+<meta property="og:title" content="Sản phẩm hương liệu — Quang Thắng Co.,Ltd">
+<meta property="og:description" content="Danh mục hương liệu mỹ phẩm, hương liệu thực phẩm, hương không gian và nguyên liệu hương gốc của hãng Givaudan do Quang Thắng phân phối.">
+<meta property="og:image" content="https://maipt-87.github.io/quangthang-website/imagesP/prod-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#faf5ef">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=20260802j">
+</head>
+<body data-page="products">
+
+<header class="header">
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <ul class="topbar__list">
+        <li>📍 <span data-qt-address></span></li>
+        <li>✉ <a data-qt-href="email" data-qt-email></a></li>
+      </ul>
+      <ul class="topbar__list">
+        <li>Hotline: <a data-qt-href="hotline" data-qt-hotline></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container nav">
+    <a class="brand" href="index.html" aria-label="Quang Thắng - Trang chủ">
+      <img src="assets/logo-h.png" alt="Quang Thắng Co.,Ltd">
+      <span class="brand__slogan">
+        <b data-qt-slogan>The Essence of Excellence</b>
+        <span data-qt-tagline>Hương liệu Givaudan · Từ 1995</span>
+      </span>
+    </a>
+    <ul class="nav__menu">
+      <li><a class="nav__link" data-nav="home" href="index.html">Trang chủ</a></li>
+      <li><a class="nav__link" data-nav="about" href="about.html">Về chúng tôi</a></li>
+      <li><a class="nav__link" data-nav="products" href="products.html">Sản phẩm</a></li>
+      <li><a class="nav__link" data-nav="industries" href="industries.html">Ứng dụng</a></li>
+      <li><a class="nav__link" data-nav="news" href="news.html">Tin tức</a></li>
+      <li><a class="nav__link" data-nav="contact" href="contact.html">Liên hệ</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a class="btn btn--primary btn--sm" href="contact.html?type=quote">Yêu cầu báo giá</a>
+      <button class="nav__toggle" type="button" aria-label="Mở menu" aria-expanded="false"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section class="page-hero">
+    <div class="page-hero__bg" style="background-image:url('imagesP/prod-hero.jpg')"></div>
+    <div class="container page-hero__inner">
+      <ul class="breadcrumb">
+        <li><a href="index.html">Trang chủ</a></li>
+        <li>Sản phẩm</li>
+      </ul>
+      <h1>Danh mục hương liệu</h1>
+      <p>Toàn bộ hương liệu do hãng Givaudan sản xuất. Chọn theo nhóm sản phẩm hoặc ứng dụng cụ thể, xem thông số kỹ thuật và gửi yêu cầu mẫu thử ngay trên trang.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+
+      <div class="filters">
+        <div class="chips" data-render="cat-chips"></div>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap;align-items:center">
+          <select id="app-select" data-render="app-select" aria-label="Lọc theo ứng dụng"
+                  style="padding:.72rem 1rem;border:1px solid var(--line);border-radius:100px;font-family:inherit;font-size:.9rem;color:var(--ink);background:#fff"></select>
+          <div class="search-box">
+            <input type="search" id="product-search" placeholder="Tìm theo tên hoặc mã sản phẩm..." aria-label="Tìm sản phẩm">
+          </div>
+        </div>
+      </div>
+
+      <p class="result-count" data-render="count"></p>
+      <div class="grid grid--3" data-render="products"></div>
+
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="container">
+      <div class="cta-band reveal">
+        <div class="cta-band__inner">
+          <div>
+            <h2>Không tìm thấy mã hương phù hợp?</h2>
+            <p>Mô tả sản phẩm và định hướng mùi bạn cần — bộ phận kỹ thuật sẽ đề xuất từ hơn 900 dòng hương của Givaudan.</p>
+          </div>
+          <a class="btn btn--primary" href="contact.html">Gửi yêu cầu tư vấn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <span class="footer__logo-plate">
+          <img class="footer__logo" src="assets/logo-h.png" alt="Quang Thắng Co.,Ltd">
+        </span>
+        <p data-qt-company></p>
+        <p>Nhà cung cấp hương liệu mỹ phẩm &amp; thực phẩm của hãng Givaudan (Thụy Sĩ) tại Việt Nam.</p>
+        <p style="font-size:.86rem">Mã số thuế: <span data-qt-tax></span></p>
+      </div>
+      <div>
+        <h4>Liên kết</h4>
+        <ul class="footer__list">
+          <li><a href="index.html">Trang chủ</a></li>
+          <li><a href="about.html">Về chúng tôi</a></li>
+          <li><a href="products.html">Sản phẩm</a></li>
+          <li><a href="industries.html">Ứng dụng</a></li>
+          <li><a href="news.html">Tin tức</a></li>
+          <li><a href="contact.html">Liên hệ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Nhóm sản phẩm</h4>
+        <ul class="footer__list">
+          <li><a href="products.html?cat=personal-care">Hương cho Personal Care</a></li>
+          <li><a href="products.html?cat=home-care">Hương cho Home Care</a></li>
+          <li><a href="products.html?cat=fine-fragrance">Hương cho Fine Fragrance</a></li>
+          <li><a href="products.html?cat=incense">Hương cho Nhang – Trầm</a></li>
+          <li><a href="products.html?cat=food">Hương cho Thực phẩm</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Thông tin liên hệ</h4>
+        <ul class="footer__list footer__contact">
+          <li><span>📍</span><span data-qt-address></span></li>
+          <li><span>✉</span><a data-qt-href="email" data-qt-email href="#"></a></li>
+          <li><span>☎</span><a data-qt-href="phone" data-qt-phone href="#"></a></li>
+          <li><span>📱</span><a data-qt-href="hotline" data-qt-hotline href="#"></a></li>
+          <li><span>🕘</span><span data-qt-hours></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© Bản quyền thuộc về Maipt_2026</span>
+      <span><a href="privacy.html">Chính sách bảo vệ dữ liệu cá nhân</a> · <a data-qt-href="email" data-qt-email href="#"></a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="fab__phone" data-qt-href="hotline" href="#" aria-label="Gọi hotline">☎</a>
+  <a class="fab__zalo" data-qt-href="zalo" href="#" target="_blank" rel="noopener" aria-label="Chat Zalo">Zalo</a>
+  <button class="fab__top" type="button" aria-label="Lên đầu trang">↑</button>
+</div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true">
+  <div class="modal__backdrop"></div>
+  <div class="modal__panel" id="modal-content"></div>
+</div>
+
+<script src="js/data.js?v=20260802j"></script>
+<script src="js/main.js?v=20260802j"></script>
+</body>
+</html>

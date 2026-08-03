@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quản trị nội dung — Quang Thắng Co.,Ltd</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=20260802j">
+</head>
+<body class="admin-body">
+
+<!-- ============================== ĐĂNG NHẬP ============================ -->
+<div class="login-wrap" id="login-screen">
+  <div class="login-card">
+    <img src="assets/logo.png" alt="Quang Thắng Co.,Ltd">
+    <h1>Quản trị nội dung</h1>
+    <p class="form-note" style="margin-bottom:1.4rem">Đăng nhập để thêm, sửa, xoá sản phẩm, tin tức và cấu hình website.</p>
+
+    <div class="alert alert--err" id="login-alert"></div>
+
+    <form id="login-form" novalidate>
+      <div class="field" style="margin-bottom:1rem">
+        <label for="lg-user">Tên đăng nhập</label>
+        <input type="text" id="lg-user" autocomplete="username">
+      </div>
+      <div class="field" style="margin-bottom:1.4rem">
+        <label for="lg-pass">Mật khẩu</label>
+        <input type="password" id="lg-pass" autocomplete="current-password">
+      </div>
+      <button class="btn btn--primary btn--block" type="submit">Đăng nhập</button>
+    </form>
+
+    <p class="form-note">Khu vực dành riêng cho quản trị viên. Nếu bạn quên mật khẩu,
+      liên hệ người quản lý website.</p>
+    <p class="form-note" style="margin-top:.8rem"><a href="index.html">← Về trang chủ</a></p>
+  </div>
+</div>
+
+<!-- ============================ KHUNG QUẢN TRỊ ========================= -->
+<div class="admin-shell" id="admin-shell" hidden>
+
+  <aside class="admin-side">
+    <div class="admin-side__brand">
+      <span class="admin-side__plate"><img src="assets/logo-h.png" alt="Quang Thắng"></span>
+    </div>
+    <ul class="admin-nav">
+      <li><button type="button" data-view="dashboard" class="is-active"><span class="admin-nav__icon">▦</span> Tổng quan</button></li>
+      <li><button type="button" data-view="products"><span class="admin-nav__icon">🧴</span> Sản phẩm</button></li>
+      <li><button type="button" data-view="categories"><span class="admin-nav__icon">🗂</span> Nhóm sản phẩm</button></li>
+      <li><button type="button" data-view="industries"><span class="admin-nav__icon">🏭</span> Ứng dụng ngành</button></li>
+      <li><button type="button" data-view="news"><span class="admin-nav__icon">📰</span> Tin tức</button></li>
+      <li><button type="button" data-view="quotes"><span class="admin-nav__icon">✉</span> Yêu cầu liên hệ <span id="quote-badge"></span></button></li>
+      <li><button type="button" data-view="settings"><span class="admin-nav__icon">⚙</span> Cấu hình website</button></li>
+      <li><button type="button" data-view="system"><span class="admin-nav__icon">💾</span> Dữ liệu &amp; sao lưu</button></li>
+    </ul>
+    <div style="margin-top:1.6rem;padding:0 .5rem">
+      <a class="btn btn--ghost btn--sm btn--block" href="index.html" target="_blank" rel="noopener">Xem website ↗</a>
+      <button class="btn btn--sm btn--block" id="logout-btn" type="button" style="margin-top:.6rem;color:#e6977a;border:1px solid rgba(255,255,255,.2)">Đăng xuất</button>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-top">
+      <div>
+        <h1 id="view-title">Tổng quan</h1>
+        <p id="view-desc">Tình hình nội dung website và các yêu cầu mới nhất.</p>
+      </div>
+      <div class="admin-actions" id="view-actions"></div>
+    </div>
+    <div id="view-body"></div>
+  </main>
+
+</div>
+
+<!-- ========================== MODAL BIỂU MẪU ========================== -->
+<div class="modal" id="admin-modal" role="dialog" aria-modal="true">
+  <div class="modal__backdrop"></div>
+  <div class="modal__panel" id="admin-modal-content" style="max-width:720px"></div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="js/data.js?v=20260802j"></script>
+<script src="js/admin.js?v=20260802j"></script>
+</body>
+</html>
