@@ -1,13 +1,11 @@
 /* =========================================================================
-   QUANG THANG CO.,LTD — Bảng màu SALMON → CORAL → POPPY
+   QUANG THANG CO.,LTD — Bảng màu CORAL → POPPY
 
-   Nâng cấp từ tông salmon-coral sang dải màu năng động hơn: SALMON (nhạt,
-   nền phấn/badge) → CORAL (phụ, eyebrow/hover) → POPPY (chính, nút CTA,
-   tiêu đề nhấn). Poppy là tông đỏ-cam rực, ấm và tươi hơn coral cũ — tạo
-   cảm giác trẻ trung, năng động, đúng tinh thần ngành hương liệu cao cấp,
-   trong khi vẫn cùng họ màu với logo (không lệch sang xanh/tím).
+   Tông đỏ-cam ấm, cùng họ màu với logo: CORAL (phụ, eyebrow/hover) → POPPY
+   (chính, nút CTA, tiêu đề nhấn) — tạo cảm giác trẻ trung, năng động, đúng
+   tinh thần ngành hương liệu cao cấp, không lệch sang xanh/tím.
    Header/topbar vẫn nền trắng-kem trung tính nên logo không bị lấn át —
-   salmon/coral/poppy chỉ xuất hiện ở nút, link, khối nhấn.
+   coral/poppy chỉ xuất hiện ở nút, link, khối nhấn.
 
    Giữ nguyên TÊN biến (--navy…, --red…), chỉ đổi GIÁ TRỊ — không phải sửa
    hàng trăm chỗ dùng var() trong file.
@@ -27,15 +25,11 @@
   --navy-100: #fce7dd;
   --navy-50: #fdf3ee;
 
-  /* Coral — phụ, dùng cho eyebrow/hover/badge để tạo dải "salmon → coral → poppy" */
+  /* Coral — phụ, dùng cho eyebrow/hover/badge */
   --red: #ad4229;        /* CORAL phụ — eyebrow, hover link */
   --red-600: #8f3620;    /* trạng thái hover đậm hơn */
   --red-400: #e6977a;    /* nhấn trên nền tối (footer) */
   --red-100: #fbe4da;    /* nền phấn coral nhạt */
-
-  /* Salmon — nhạt nhất trong dải, dùng cho nền phấn/blob trang trí mềm mại */
-  --salmon-200: #f6c9b5;
-  --salmon-50: #fdf5f1;
 
   /* Melon/Peach — nền sáng cho topbar & footer, chữ đổi sang tối để đủ tương phản */
   --peach: #f4b48c;
@@ -44,8 +38,7 @@
   /* Phụ trợ ấm */
   --gold: #c6a46e;
   --amber: #f0cd8f;      /* chữ nhấn trên nền tối */
-  --amber-soft: #f3dcae;
-  --sage-100: #e8f0e9;   /* nền phấn xanh lá nhạt — tạo nhịp màu xen kẽ với salmon/coral */
+  --sage-100: #e8f0e9;   /* nền phấn xanh lá nhạt — tạo nhịp màu xen kẽ với coral */
   --sage-500: #7e9e88;
   --sand-100: #f6ecdc;   /* nền phấn cát */
 
@@ -53,7 +46,6 @@
   --body: #5d6478;
   --muted: #697083;
   --line: #ece5dc;
-  --white: #ffffff;
   --cream: #faf5ef;      /* nền các khối xen kẽ */
   --page: #fffdfa;       /* nền trang */
 
@@ -423,9 +415,6 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ----------------------------- Sản phẩm ------------------------------- */
 .prod-card__id { font-size: .78rem; font-weight: 700; letter-spacing: .08em; color: var(--muted); }
-.prod-card__notes { list-style: none; padding: 0; margin: 0 0 1rem; font-size: .88rem; }
-.prod-card__notes li { padding-left: 1rem; position: relative; }
-.prod-card__notes li::before { content: '·'; position: absolute; left: .2rem; color: var(--red); font-weight: 700; }
 
 /* ------------------------------- Modal -------------------------------- */
 .modal {

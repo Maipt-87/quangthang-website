@@ -4,7 +4,7 @@ Website giới thiệu doanh nghiệp cho nhà cung cấp hương liệu mỹ ph
 của hãng **Givaudan** (Thụy Sĩ) tại Việt Nam. Xây dựng bằng HTML / CSS /
 JavaScript thuần — không framework, không bước build.
 
-> **The Essence of Excellence** — Hương liệu Givaudan · Từ 1995
+> **Bringing the world of Fragrances & Flavours to YOU** — Hương liệu Givaudan · Từ 1995
 
 ## Chạy thử
 
@@ -52,6 +52,12 @@ duyệt nên về nguyên tắc có thể bị vượt qua, và API của `app.p
 xác thực. Lớp này chỉ ngăn người ngoài vô tình sửa nội dung — muốn bảo mật
 nghiêm túc phải chuyển xác thực về máy chủ.
 
+**Đưa nội dung admin lên website thật:** khi chạy qua `app.py`, nội dung sửa
+trong admin chỉ lưu ở `data/site-data.json` trên máy đang chạy — GitHub Pages
+là host tĩnh nên không đọc được file này. Chạy `python sync_admin_data.py` để
+chép nội dung đó vào `js/data.js` (nội dung mặc định mà mọi khách truy cập
+đều thấy), rồi commit + push như bình thường.
+
 ## Nhận yêu cầu báo giá từ khách
 
 Website xử lý theo thứ tự sau khi khách bấm gửi:
@@ -76,21 +82,26 @@ Website xử lý theo thứ tự sau khi khách bấm gửi:
 | `industries.html` | Ứng dụng theo ngành, quy trình làm việc |
 | `news.html` | Tin tức & xu hướng |
 | `contact.html` | Liên hệ, bản đồ, form yêu cầu báo giá |
+| `privacy.html` | Chính sách bảo vệ dữ liệu cá nhân |
 | `admin.html` | Trang quản trị nội dung |
+| `404.html` | Trang lỗi khi không tìm thấy đường dẫn |
 | `css/style.css` | Toàn bộ giao diện, responsive |
 | `js/data.js` | Dữ liệu dùng chung + lớp lưu trữ |
 | `js/main.js` | Hiệu ứng và tương tác trang public |
 | `js/admin.js` | Chức năng trang quản trị |
 | `app.py` | Máy chủ nội bộ + API lưu nội dung |
+| `sync_admin_data.py` | Đồng bộ nội dung đã sửa trong admin vào `js/data.js` trước khi commit |
 | `assets/` | Logo, favicon |
 | `imagesP/` | Thư viện ảnh dùng cho sản phẩm và bài viết |
+| `robots.txt`, `sitemap.xml` | Cấu hình SEO — chặn crawl `admin.html` |
 
 ## Thương hiệu
 
-Bảng màu chủ đạo lấy tông ấm cùng họ với logo, đi từ nhạt đến đậm: salmon
-`#f6c9b5` → coral `#ad4229` → poppy `#b8341e` (màu chính, dùng cho nút CTA và
-tiêu đề nhấn) → nâu bơ/caramel `#6e4818` (lớp phủ ảnh banner). Toàn bộ khai
-báo trong `:root` ở đầu file `css/style.css`.
+Bảng màu chủ đạo lấy tông ấm cùng họ với logo: coral `#ad4229` (phụ, eyebrow/
+hover) → poppy `#b8341e` (chính, dùng cho nút CTA và tiêu đề nhấn), cùng tông
+melon/peach `#f4b48c` cho nền topbar/footer. Banner giữ đúng màu ảnh gốc,
+không phủ gradient — chữ đọc rõ nhờ text-shadow. Toàn bộ khai báo trong
+`:root` ở đầu file `css/style.css`.
 
 ## Lưu ý
 
