@@ -240,7 +240,15 @@ button { font-family: inherit; cursor: pointer; }
   color: #fff; font-size: .82rem; font-weight: 600; letter-spacing: .04em; margin-bottom: 1.5rem;
 }
 .hero__badge b { color: var(--red-400); }
-.hero h1 { color: #fff; margin-bottom: 1.1rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .6), 0 12px 34px rgba(0, 0, 0, .45); }
+.hero h1 { color: #fff; margin-bottom: .5rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .6), 0 12px 34px rgba(0, 0, 0, .45); }
+/* Slogan thương hiệu — đặt ngay dưới H1, chỗ dễ thấy nhất trên trang chủ,
+   không cần cuộn. Chữ nghiêng + màu nhấn để phân biệt với H1 (tiếng Việt,
+   to, đậm) mà không cạnh tranh sự chú ý. */
+.hero__slogan {
+  font-family: var(--font-display); font-style: italic; font-weight: 600;
+  font-size: clamp(1rem, 1.7vw, 1.22rem); color: var(--red-400);
+  margin: 0 0 1.2rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .55), 0 8px 24px rgba(0, 0, 0, .4);
+}
 .hero__desc { color: #fff; font-size: 1.1rem; max-width: 580px; margin-bottom: 2rem; text-shadow: 0 1px 5px rgba(0, 0, 0, .65), 0 8px 24px rgba(0, 0, 0, .45); }
 .hero__cta { display: flex; flex-wrap: wrap; gap: .85rem; }
 .hero__dots { position: absolute; bottom: 2.2rem; left: 0; right: 0; z-index: 3; display: flex; gap: .55rem; }
