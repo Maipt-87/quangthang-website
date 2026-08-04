@@ -545,13 +545,18 @@ button { font-family: inherit; cursor: pointer; }
 .footer__logo-plate { display: inline-block; margin-bottom: 1.2rem; }
 .footer__logo { height: 46px; width: auto; display: block; }
 /* Slogan/tagline chuyển từ header xuống đây — chỗ này rộng rãi, không bị
-   giới hạn chiều ngang như header nên hiện trọn câu mà không cần bóp nhỏ. */
+   giới hạn chiều ngang như header nên hiện trọn câu mà không cần bóp nhỏ.
+   Cỡ chữ phải LỚN HƠN chữ thường bên dưới (công ty/địa chỉ) để đọc như một
+   khẩu hiệu thật sự, không lẫn vào thành chữ chú thích nhỏ khó nhận ra. */
 .footer__slogan {
-  font-family: var(--font-display); font-size: .82rem; font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase; color: var(--navy-800);
-  margin: 0 0 .25rem; max-width: 320px;
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 800;
+  font-style: italic; line-height: 1.32; color: var(--navy-800);
+  margin: 0 0 .35rem; max-width: 320px;
 }
-.footer__tagline { font-size: .82rem; color: var(--navy-800); opacity: .72; margin: 0 0 1rem; }
+.footer__tagline {
+  font-size: .88rem; font-weight: 600; letter-spacing: .03em;
+  text-transform: uppercase; color: var(--navy-800); margin: 0 0 1.1rem;
+}
 .footer__list { list-style: none; padding: 0; margin: 0; }
 .footer__list li { margin-bottom: .55rem; }
 .footer__contact li { display: flex; gap: .65rem; margin-bottom: .8rem; }
