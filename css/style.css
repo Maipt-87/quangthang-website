@@ -704,12 +704,35 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Logo nằm ngang khá rộng (~256px ở chiều cao 46px) nên dải "menu ngang thu
-   gọn" trước đây (1101–1540px) không đủ chỗ cho slogan hiện đầy đủ dù đã cắt
-   ngắn max-width — hoặc bị vỡ hàng, hoặc slogan phải cắt dở câu. Giải pháp:
-   chuyển hẳn sang menu hamburger sớm hơn (dưới 1600px) để nhường chỗ cho
-   logo + slogan, thay vì cố nhồi slogan vào cùng hàng với menu ngang đầy đủ. */
-@media (max-width: 1600px) {
+/* Menu ngang thu gọn khi menu di động chưa bật (≥1101px) — ưu tiên giữ menu
+   ngang (Trang chủ/Sản phẩm/…) luôn hiện đầy đủ. Logo ngang chiếm tới
+   ~256px nên nếu để slogan chung hàng với logo, dù đã bóp max-width vẫn
+   phải wrap thành 5-7 dòng ngắn xíu, trông như bị ẩn/vỡ. Giải pháp: xếp
+   slogan XUỐNG DƯỚI logo (không chung hàng ngang nữa) — slogan được dùng
+   gần hết chiều rộng cột brand thay vì chia sẻ với logo, gọn lại còn 2 dòng.
+   LƯU Ý: .nav có max-width cố định (~1220px nội dung) nên container KHÔNG
+   nở rộng thêm dù màn hình rất to — nghĩa là kiểu "mặc định" (logo+slogan
+   chung hàng, slogan rộng tới 320px) sẽ luôn tràn ở MỌI độ rộng desktop,
+   không riêng gì gần ngưỡng 1540px. Vì vậy bỏ luôn max-width phía trên,
+   áp dụng cách xếp gọn này cho toàn bộ dải ≥1101px. */
+@media (min-width: 1101px) {
+  .nav__link { padding: .6rem .5rem; font-size: .88rem; }
+  .nav__link::after { left: .5rem; right: .5rem; }
+  .nav__actions .btn { padding: .55rem .95rem; font-size: .84rem; }
+  .brand img { height: 36px; }
+  .brand { flex-direction: column; align-items: flex-start; gap: .25rem; }
+  .brand__slogan {
+    max-width: 260px; padding-left: 0; padding-top: .25rem;
+    border-left: 0; border-top: 1px solid var(--line);
+  }
+  .brand__slogan b { font-size: .68rem; }
+  .brand__slogan span { font-size: .59rem; }
+}
+
+/* Menu di động — giữ nguyên ngưỡng 1100px như trước (KHÔNG đẩy lên 1600px
+   nữa: làm vậy ẩn mất menu ngang — Trang chủ/Sản phẩm/… — trên rất nhiều
+   màn hình laptop/desktop bình thường, đánh đổi quá đắt chỉ để hiện slogan). */
+@media (max-width: 1100px) {
   :root { --header-h: 92px; }
   .nav__toggle { display: block; }
   .nav__menu {
