@@ -548,10 +548,11 @@ button { font-family: inherit; cursor: pointer; }
 .footer {
   /* Nền melon/peach sáng sủa thay cho khối tối trước đây */
   background: linear-gradient(180deg, var(--peach-light) 0%, var(--peach) 100%);
-  color: var(--ink); padding-top: clamp(3rem, 5vw, 4.5rem); font-size: .94rem;
+  /* Chữ chung 1 màu — cùng tông với số điện thoại (.footer a) để đồng bộ */
+  color: var(--navy-800); padding-top: clamp(3rem, 5vw, 4.5rem); font-size: .94rem;
   border-top: 4px solid var(--navy);
 }
-.footer h4 { color: var(--navy-900); font-size: 1rem; margin-bottom: 1.1rem; font-family: var(--font-display); }
+.footer h4 { color: var(--navy-800); font-size: 1rem; margin-bottom: 1.1rem; font-family: var(--font-display); }
 .footer a { color: var(--navy-800); }
 .footer a:hover { color: var(--red); }
 .footer__grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1.3fr; gap: 2.2rem; padding-bottom: 2.5rem; }
