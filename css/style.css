@@ -183,24 +183,11 @@ button { font-family: inherit; cursor: pointer; }
 .topbar__list li { display: inline-flex; align-items: center; gap: .45rem; }
 
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: var(--header-h); }
-.brand { display: inline-flex; align-items: center; gap: .85rem; flex-shrink: 0; min-width: 0; }
+/* Logo đứng riêng, không còn chia chỗ với slogan trong header — slogan đã
+   chuyển xuống footer (xem .footer__slogan) để logo không bị co kéo. */
+.brand { display: inline-flex; align-items: center; flex-shrink: 0; min-width: 0; }
 .brand img { height: 46px; width: auto; transition: transform .3s var(--ease); }
 .brand:hover img { transform: scale(1.03); }
-
-/* Slogan cạnh logo — trước đây cắt bằng dấu "…" nên không bao giờ hiện hết
-   câu (dù màn hình rộng cỡ nào), vì slogan tiếng Anh khá dài. Giờ cho phép
-   xuống dòng để LUÔN hiện đủ toàn bộ nội dung, chỉ giới hạn chiều rộng để
-   không đẩy vỡ layout header. */
-.brand__slogan {
-  display: flex; flex-direction: column; gap: .12rem; min-width: 0;
-  max-width: clamp(180px, 18vw, 320px);
-  padding-left: .85rem; border-left: 1px solid var(--line);
-}
-.brand__slogan b {
-  font-family: var(--font-display); font-size: .74rem; font-weight: 700;
-  letter-spacing: .07em; text-transform: uppercase; color: var(--navy);
-  white-space: normal; line-height: 1.28; display: block;
-}
 
 .nav__menu { display: flex; align-items: center; gap: .3rem; list-style: none; margin: 0; padding: 0; flex-shrink: 0; }
 .nav__link {
@@ -557,6 +544,14 @@ button { font-family: inherit; cursor: pointer; }
    trắng như trước — tương phản đã tốt sẵn trên nền melon/peach. */
 .footer__logo-plate { display: inline-block; margin-bottom: 1.2rem; }
 .footer__logo { height: 46px; width: auto; display: block; }
+/* Slogan/tagline chuyển từ header xuống đây — chỗ này rộng rãi, không bị
+   giới hạn chiều ngang như header nên hiện trọn câu mà không cần bóp nhỏ. */
+.footer__slogan {
+  font-family: var(--font-display); font-size: .82rem; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--navy-800);
+  margin: 0 0 .25rem; max-width: 320px;
+}
+.footer__tagline { font-size: .82rem; color: var(--navy-800); opacity: .72; margin: 0 0 1rem; }
 .footer__list { list-style: none; padding: 0; margin: 0; }
 .footer__list li { margin-bottom: .55rem; }
 .footer__contact li { display: flex; gap: .65rem; margin-bottom: .8rem; }
@@ -701,22 +696,17 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Menu ngang thu gọn khi menu di động chưa bật (≥1101px) — ưu tiên giữ menu
-   ngang (Trang chủ/Sản phẩm/…) luôn hiện đầy đủ. Slogan giờ chỉ còn 1 dòng
-   (đã bỏ dòng phụ) nên xếp DƯỚI logo thay vì chung hàng — dùng chiều cao
-   header (đang thừa chỗ) thay vì chiều ngang (đang chật vì menu+nút CTA),
-   nhờ vậy logo giữ nguyên kích thước gốc, không cần bóp nhỏ để nhường chỗ. */
-@media (min-width: 1101px) {
-  .nav__link { padding: .6rem .5rem; font-size: .88rem; }
-  .nav__link::after { left: .5rem; right: .5rem; }
-  .nav__actions .btn { padding: .55rem .95rem; font-size: .84rem; }
-  .brand { flex-direction: column; align-items: flex-start; gap: .3rem; }
-  .brand__slogan { max-width: 256px; padding-left: 0; border-left: 0; }
+/* Logo giờ đứng riêng (không còn slogan chung hàng trong header) nên hầu hết
+   độ rộng ≥1101px đã thừa chỗ. Chỉ còn dải hẹp sát ngưỡng 1101-1150px là cần
+   bóp nhẹ padding menu ngang + nút CTA để không tràn — không cần đụng tới
+   logo/brand nữa như cách cũ. */
+@media (min-width: 1101px) and (max-width: 1150px) {
+  .nav__link { padding: .6rem .55rem; font-size: .9rem; }
+  .nav__link::after { left: .55rem; right: .55rem; }
+  .nav__actions .btn { padding: .6rem 1rem; font-size: .86rem; }
 }
 
-/* Menu di động — giữ nguyên ngưỡng 1100px như trước (KHÔNG đẩy lên 1600px
-   nữa: làm vậy ẩn mất menu ngang — Trang chủ/Sản phẩm/… — trên rất nhiều
-   màn hình laptop/desktop bình thường, đánh đổi quá đắt chỉ để hiện slogan). */
+/* Menu di động — ngưỡng 1100px. */
 @media (max-width: 1100px) {
   :root { --header-h: 92px; }
   .nav__toggle { display: block; }
@@ -736,10 +726,6 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
   .nav__link::after { display: none; }
   .nav__link.is-active { color: var(--red); }
   .nav__actions .btn { display: none; }
-  /* Menu ngang và nút CTA đã nhường chỗ cho hamburger — thừa chỗ nên cho
-     slogan hiện rộng hơn lại, để mọi người truy cập (kể cả laptop, tablet,
-     điện thoại) đều thấy được toàn bộ slogan bên cạnh logo. */
-  .brand__slogan { display: flex; max-width: 260px; }
 }
 
 /* Man hinh rat hep (vi du iPhone SE 320px): dong email + hotline khong du
@@ -759,15 +745,10 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
   .timeline { grid-template-columns: 1fr; }
   .quote-line { font-size: 1rem; padding-left: 1.1rem; }
   .kpi-grid { grid-template-columns: 1fr; }
-  /* Logo + hamburger đã chiếm gần hết hàng ngang trên điện thoại — xếp
-     slogan xuống dưới logo thay vì chen cùng hàng để có đủ chỗ hiện hết câu.
-     Dùng calc(100vw - Npx) thay vì % vì .brand là flex-item co giãn theo nội
-     dung (không có width cố định để % phân giải đúng). */
-  .brand { flex-direction: column; align-items: flex-start; gap: .3rem; flex-shrink: 1; }
-  .brand__slogan {
-    max-width: calc(100vw - 130px); padding-left: 0; padding-top: .3rem;
-    border-left: 0; border-top: 1px solid var(--line);
-  }
+  /* Logo ngang ở chiều cao gốc (46px) rộng tới ~256px — quá khổ cho màn hình
+     hẹp nay đã đứng riêng không còn slogan che bớt độ rộng. Thu nhỏ lại để
+     vẫn còn chỗ cho nút hamburger bên phải. */
+  .brand img { height: 34px; }
   .hero { min-height: auto; }
   .hero__inner { padding: 3.6rem 0 5rem; }
   .hero__cta .btn { flex: 1 1 100%; }
