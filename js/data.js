@@ -14,7 +14,7 @@
      này lên: bản lưu cũ trong localStorage của khách sẽ bị bỏ qua để họ thấy
      ngay nội dung mới, thay vì kẹt với bản cũ đã lưu từ trước. Dữ liệu lưu
      trên máy chủ (app.py) không bị ảnh hưởng. */
-  var CONTENT_VERSION = '2026-08-02.6';
+  var CONTENT_VERSION = '2026-08-04.1';
 
   var IMG = 'imagesP/';
 
@@ -150,7 +150,7 @@
        Công bố chứng nhận không có là quảng cáo sai sự thật. */
     certificates: [
       { name: 'Giấy phép kinh doanh', desc: 'Đăng ký ngành nghề nhập khẩu và phân phối hương liệu, phụ gia thực phẩm.' },
-      { name: 'Hồ sơ IFRA / COA / MSDS/ALLERGEN', desc: 'coa Cung cấp theo từng lô hàng do nhà sản xuất phát hành, phục vụ đánh giá nhà cung cấp.' },
+      { name: 'Hồ sơ IFRA / COA / MSDS/ALLERGEN', desc: 'Cung cấp theo từng lô hàng do nhà sản xuất phát hành, phục vụ đánh giá nhà cung cấp.' },
       { name: 'Công bố sản phẩm', desc: 'Hỗ trợ khách hàng tư vấn hoàn thiện hồ sơ công bố theo quy định hiện hành.' }
       // Thêm chứng nhận khác (ISO, HALAL…) tại đây khi công ty thực sự có — kèm số hiệu và thời hạn.
       // Chỉ liệt kê chứng nhận đang còn hiệu lực; công bố chứng nhận không có là quảng cáo sai sự thật.
