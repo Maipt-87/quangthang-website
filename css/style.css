@@ -481,7 +481,10 @@ button { font-family: inherit; cursor: pointer; }
 .contact-card { padding: 1.35rem 1.1rem; border-radius: var(--radius); border: 1px solid var(--line); background: #fff; display: flex; gap: .8rem; height: 100%; }
 .contact-card__icon { width: 42px; height: 42px; flex-shrink: 0; border-radius: 12px; background: var(--navy-50); color: var(--navy); display: grid; place-items: center; font-size: 1.2rem; }
 .contact-card h3 { font-size: 1rem; margin-bottom: .3rem; }
-.contact-card p { font-size: .93rem; margin: 0; }
+/* Đồng nhất màu chữ giá trị (địa chỉ, giờ làm việc) với màu số điện thoại
+   (vốn đã là var(--navy) vì là link) — trước đây địa chỉ/giờ làm việc dùng
+   màu chữ thường (var(--body)) nên trông nhạt hơn hẳn email/điện thoại. */
+.contact-card p { font-size: .93rem; margin: 0; color: var(--navy); }
 .contact-card > div:last-child { min-width: 0; }
 /* Giờ làm việc lưu dạng nhiều dòng — giữ nguyên vị trí xuống dòng */
 [data-qt-hours] { white-space: pre-line; }
@@ -555,18 +558,19 @@ button { font-family: inherit; cursor: pointer; }
    trắng như trước — tương phản đã tốt sẵn trên nền melon/peach. */
 .footer__logo-plate { display: inline-block; margin-bottom: 1.2rem; }
 .footer__logo { height: 46px; width: auto; display: block; }
-/* Slogan/tagline chuyển từ header xuống đây — chỗ này rộng rãi, không bị
-   giới hạn chiều ngang như header nên hiện trọn câu mà không cần bóp nhỏ.
-   Cỡ chữ phải LỚN HƠN chữ thường bên dưới (công ty/địa chỉ) để đọc như một
-   khẩu hiệu thật sự, không lẫn vào thành chữ chú thích nhỏ khó nhận ra. */
+/* Slogan/tagline đặt thành dải riêng, canh giữa, nằm dưới các cột liên kết —
+   dùng chung font hiển thị của website (Sora, giống h4/menu) thay vì font
+   nghiêng riêng, để đồng bộ với phần còn lại của footer. */
+.footer__slogan-band {
+  text-align: center; padding: 1.7rem 0; border-top: 1px solid rgba(0, 0, 0, .1);
+}
 .footer__slogan {
-  font-family: var(--font-slogan); font-size: 1.15rem; font-weight: 600;
-  font-style: italic; line-height: 1.32; color: var(--navy-800);
-  margin: 0 0 .35rem; max-width: 320px;
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  line-height: 1.32; color: var(--navy-800); margin: 0 0 .3rem;
 }
 .footer__tagline {
-  font-size: .88rem; font-weight: 600; letter-spacing: .03em;
-  text-transform: uppercase; color: var(--navy-800); margin: 0 0 1.1rem;
+  font-size: .85rem; font-weight: 600; letter-spacing: .03em;
+  text-transform: uppercase; color: var(--navy-800); margin: 0;
 }
 .footer__list { list-style: none; padding: 0; margin: 0; }
 .footer__list li { margin-bottom: .55rem; }
