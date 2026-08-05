@@ -14,7 +14,7 @@
      này lên: bản lưu cũ trong localStorage của khách sẽ bị bỏ qua để họ thấy
      ngay nội dung mới, thay vì kẹt với bản cũ đã lưu từ trước. Dữ liệu lưu
      trên máy chủ (app.py) không bị ảnh hưởng. */
-  var CONTENT_VERSION = '2026-08-04.1';
+  var CONTENT_VERSION = '2026-08-04.2';
 
   var IMG = 'imagesP/';
 
@@ -39,7 +39,7 @@
       /* Địa chỉ nhận form (Formspree, EmailJS, Google Form…). Khi điền vào đây,
          yêu cầu của khách được gửi thẳng tới email công ty — cần thiết khi
          website chạy trên host tĩnh như GitHub Pages (không có máy chủ). */
-      formEndpoint: '',
+      formEndpoint: 'https://formspree.io/f/xwleedde',
       mapEmbed: 'https://www.google.com/maps?q=998+Nguy%E1%BB%85n+Tr%C3%A3i,+Ph%C6%B0%E1%BB%9Dng+Ch%E1%BB%A3+L%E1%BB%9Bn,+TP.HCM&output=embed',
       stats: [
         { value: 30, suffix: '+', label: 'Năm kinh nghiệm từ 1995' },
