@@ -357,11 +357,15 @@ button { font-family: inherit; cursor: pointer; }
 .section--navy .check-list li::before { background: rgba(246, 201, 181, .22); color: var(--red-400); }
 
 /* ---------------------- Câu trích trong bài viết ---------------------- */
+/* Trước dùng Sora nghiêng — Sora không có bản in nghiêng thật nên trình
+   duyệt tự nghiêng giả (oblique), nhìn hơi lệch chứ không sắc nét. Đổi sang
+   Inter nghiêng thật (đã nạp qua Google Fonts) — Inter hỗ trợ đầy đủ dấu
+   tiếng Việt, phù hợp cho câu trích tiếng Việt hơn font trang trí gốc Latin. */
 .quote-line {
   margin: 1.6rem 0 0; padding: 1.1rem 0 1.1rem 1.4rem;
   border-left: 3px solid var(--red);
-  font-family: var(--font-display); font-size: 1.08rem; font-style: italic;
-  color: var(--navy-800); line-height: 1.55;
+  font-family: var(--font); font-size: 1.1rem; font-style: italic; font-weight: 500;
+  color: var(--navy-800); line-height: 1.6;
 }
 
 /* ---------------------------- Dòng thời gian -------------------------- */
