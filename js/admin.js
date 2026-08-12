@@ -18,7 +18,7 @@
         QTAdminHash('mật khẩu mới')
      rồi dán chuỗi nhận được vào PASS_HASH bên dưới. */
   var USER = 'admin';
-  var PASS_HASH = '1348a35172213dd9cfe170bf1ec6f4a79705a78667a20221123f331ddec3c07e';
+  var PASS_HASH = '725b15ca4a6db840f0d5d8cd675f9c5fd824db0982540eec981677be1f27fe7f';
   var SESSION_KEY = 'quangthang_admin_session';
 
   /** Băm mật khẩu bằng Web Crypto (khả dụng trên https và localhost). */
