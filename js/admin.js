@@ -6,19 +6,18 @@
 (function () {
   'use strict';
 
-  /* Mật khẩu không để nguyên văn trong mã nguồn — chỉ lưu mã băm SHA-256 của
-     chuỗi 'QuangThang|<mật khẩu>'. Người xem mã nguồn không đọc được mật khẩu.
+  /* Đây là lớp bảo mật THỨ HAI, chỉ để tiện dùng (nhớ 1 mật khẩu, không phải
+     nhập lại UI đăng nhập lạ). Lớp bảo mật THẬT nằm ở máy chủ: file .htaccess
+     ở gốc web yêu cầu HTTP Basic Auth (do Apache kiểm tra, không thể bỏ qua
+     bằng cách sửa JavaScript) trước khi trình duyệt tải được admin.html —
+     xem .htaccess và HUONG_DAN_BAO_MAT.md để biết cách cấu hình trên hosting.
 
-     LƯU Ý QUAN TRỌNG: đây là website tĩnh nên mọi kiểm tra đăng nhập đều chạy
-     trong trình duyệt và về nguyên tắc có thể bị vượt qua. Lớp này chỉ ngăn
-     người ngoài vô tình vào sửa nội dung, KHÔNG phải bảo mật thật. Khi cần bảo
-     mật nghiêm túc, phải chuyển việc xác thực về máy chủ.
-
-     Đổi mật khẩu: mở Console của trình duyệt trên trang này và chạy
-        QTAdminHash('mật khẩu mới')
-     rồi dán chuỗi nhận được vào PASS_HASH bên dưới. */
-  var USER = 'admin';
-  var PASS_HASH = '725b15ca4a6db840f0d5d8cd675f9c5fd824db0982540eec981677be1f27fe7f';
+     Mật khẩu không để nguyên văn trong mã nguồn — chỉ lưu mã băm SHA-256 của
+     chuỗi 'QuangThang|<mật khẩu>'. Đổi mật khẩu: mở Console trình duyệt tại
+     trang này, chạy QTAdminHash('mật khẩu mới'), dán chuỗi nhận được vào
+     PASS_HASH bên dưới — VÀ nhớ tạo lại .htpasswd tương ứng trên hosting. */
+  var USER = 'Quang Thang';
+  var PASS_HASH = '7d07ddcff2745e62355588f104e8cc52b53fc0e13ca47523f463d32328d4b8d2';
   var SESSION_KEY = 'quangthang_admin_session';
 
   /** Băm mật khẩu bằng Web Crypto (khả dụng trên https và localhost). */
@@ -44,37 +43,37 @@
   /* Toàn bộ ảnh thật đang dùng trong imagesP/ — thay cho dãy ảnh số cũ
      (1.jpg…50.jpg) đã xoá khỏi dự án vì không còn nơi nào tham chiếu tới. */
   var IMAGE_POOL = [
-    'imagesP/prod-hero.jpg',
-    'imagesP/prod-bloom-elegance.jpg',
-    'imagesP/prod-noir-intense.jpg',
-    'imagesP/prod-aqua-fresh.jpg',
-    'imagesP/prod-rose-garden.jpg',
-    'imagesP/prod-silk-hair.jpg',
-    'imagesP/prod-pearl-blossom.jpg',
-    'imagesP/prod-moon-light.jpg',
-    'imagesP/prod-emerald-woods.jpg',
-    'imagesP/prod-sunset-veil.jpg',
-    'imagesP/prod-spa-ritual.jpg',
-    'imagesP/prod-lavender-calm.jpg',
-    'imagesP/prod-warm-amber.jpg',
-    'imagesP/prod-tinh-dau.jpg',
-    'imagesP/prod-citrus-burst.jpg',
-    'imagesP/prod-creamy-vanilla.jpg',
-    'imagesP/prod-spice-master.jpg',
-    'imagesP/prod-savoury-blend.jpg',
-    'imagesP/prod-herbal-green.jpg',
-    'imagesP/prod-golden-curry.jpg',
-    'imagesP/prod-chili-paprika.jpg',
-    'imagesP/prod-pure-laundry.jpg',
-    'imagesP/prod-citrus-multiclean.jpg',
-    'imagesP/prod-calm-diffuser.jpg',
-    'imagesP/prod-strawberry-cream.jpg',
-    'imagesP/prod-fresh-milk.jpg',
-    'imagesP/prod-matcha-green.jpg',
-    'imagesP/prod-fruit-gummy.jpg',
-    'imagesP/prod-coconut-oil.jpg',
-    'imagesP/prod-warehouse.jpg',
-    'imagesP/prod-cocktail.jpg'
+    'imagesP/prod-hero.webp',
+    'imagesP/prod-bloom-elegance.webp',
+    'imagesP/prod-noir-intense.webp',
+    'imagesP/prod-aqua-fresh.webp',
+    'imagesP/prod-rose-garden.webp',
+    'imagesP/prod-silk-hair.webp',
+    'imagesP/prod-pearl-blossom.webp',
+    'imagesP/prod-moon-light.webp',
+    'imagesP/prod-emerald-woods.webp',
+    'imagesP/prod-sunset-veil.webp',
+    'imagesP/prod-spa-ritual.webp',
+    'imagesP/prod-lavender-calm.webp',
+    'imagesP/prod-warm-amber.webp',
+    'imagesP/prod-tinh-dau.webp',
+    'imagesP/prod-citrus-burst.webp',
+    'imagesP/prod-creamy-vanilla.webp',
+    'imagesP/prod-spice-master.webp',
+    'imagesP/prod-savoury-blend.webp',
+    'imagesP/prod-herbal-green.webp',
+    'imagesP/prod-golden-curry.webp',
+    'imagesP/prod-chili-paprika.webp',
+    'imagesP/prod-pure-laundry.webp',
+    'imagesP/prod-citrus-multiclean.webp',
+    'imagesP/prod-calm-diffuser.webp',
+    'imagesP/prod-strawberry-cream.webp',
+    'imagesP/prod-fresh-milk.webp',
+    'imagesP/prod-matcha-green.webp',
+    'imagesP/prod-fruit-gummy.webp',
+    'imagesP/prod-coconut-oil.webp',
+    'imagesP/prod-warehouse.webp',
+    'imagesP/prod-cocktail.webp'
   ];
 
   var $ = function (s, c) { return (c || document).querySelector(s); };
@@ -1159,8 +1158,12 @@
     if (IMAGE_POOL.indexOf(path) === -1) IMAGE_POOL.unshift(path);
   }
 
-  /* Đọc file ảnh -> vẽ lại qua canvas để giới hạn kích thước + nén JPEG,
-     trả về data URL (base64) sẵn sàng để lưu hoặc gửi đi. */
+  /* Đọc file ảnh -> vẽ lại qua canvas để giới hạn kích thước + nén WebP,
+     trả về { dataUrl, ext }. Toàn bộ ảnh có sẵn trong imagesP/ đã chuyển
+     sang WebP (nhẹ hơn JPEG ~30% cùng chất lượng) nên ảnh tải mới cũng nén
+     theo định dạng này để đồng bộ. Trình duyệt cũ không xuất được canvas
+     dạng WebP sẽ tự rơi về JPEG (toDataURL trả PNG nếu không hỗ trợ định
+     dạng yêu cầu — kiểm tra chuỗi trả về để phát hiện, tránh PNG nặng). */
   function resizeImageFile(file, maxSide, quality) {
     return new Promise(function (resolve, reject) {
       if (!file || file.type.indexOf('image/') !== 0) {
@@ -1180,7 +1183,12 @@
           var canvas = document.createElement('canvas');
           canvas.width = cw; canvas.height = ch;
           canvas.getContext('2d').drawImage(img, 0, 0, cw, ch);
-          resolve(canvas.toDataURL('image/jpeg', quality));
+          var webp = canvas.toDataURL('image/webp', quality);
+          if (webp.indexOf('data:image/webp') === 0) {
+            resolve({ dataUrl: webp, ext: 'webp' });
+          } else {
+            resolve({ dataUrl: canvas.toDataURL('image/jpeg', quality), ext: 'jpg' });
+          }
         };
         img.src = String(reader.result);
       };
@@ -1214,8 +1222,10 @@
   /* Điều phối chính: nén ảnh rồi lưu theo đúng chế độ đang chạy, trả về
      Promise<{ path, temporary?, pending? }> để gán vào field ảnh. */
   function uploadImageFile(file, nameHint) {
-    var filename = 'prod-' + slugify(nameHint) + '-' + Date.now().toString(36).slice(-5) + '.jpg';
-    return resizeImageFile(file, 2000, .82).then(function (dataUrl) {
+    var namePrefix = 'prod-' + slugify(nameHint) + '-' + Date.now().toString(36).slice(-5);
+    return resizeImageFile(file, 2000, .82).then(function (resized) {
+      var dataUrl = resized.dataUrl;
+      var filename = namePrefix + '.' + resized.ext;
       if (window.QTData.storageInfo().mode === 'server') {
         return fetch('/api/upload-image', {
           method: 'POST',

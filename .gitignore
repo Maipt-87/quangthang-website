@@ -6,6 +6,12 @@ data/
 # được chọn lọc, đổi tên và nén trong imagesP/ mới được đưa lên repo.
 Product/
 
+# Mat khau da ma hoa cho HTTP Basic Auth cua trang admin (xem .htaccess).
+# KHONG dua len GitHub du la mat khau da bam - repo nay public, ai cung
+# tai duoc va co the do offline. Tu upload file nay truc tiep qua File
+# Manager/FTP, khong qua Git.
+.htpasswd
+
 # Python
 __pycache__/
 *.py[cod]

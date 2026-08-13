@@ -1,0 +1,22 @@
+# Bao ve trang admin.html bang HTTP Basic Auth (Apache kiem tra o may chu,
+# khong the vuot qua bang cach sua JavaScript trong trinh duyet - day la
+# lop bao mat THAT, khac voi lop kiem tra mat khau trong js/admin.js chi
+# mang tinh tien dung).
+#
+# QUAN TRONG: file .htpasswd (chua mat khau da ma hoa) KHONG duoc dua len
+# GitHub - phai tu tao va upload rieng qua File Manager/FTP, dat NGOAI
+# thu muc public_html (vi du /home/quangthang/.htpasswd) de khong ai tai
+# duoc truc tiep qua trinh duyet. Xem huong dan chi tiet o cuoi file nay.
+
+<Files "admin.html">
+  AuthType Basic
+  AuthName "Khu vuc quan tri - Quang Thang Co.,LTD"
+  AuthUserFile /home/quangthang/.htpasswd
+  Require valid-user
+</Files>
+
+# Khong cho tai truc tiep bat ky file nao bat dau bang dau cham (.htaccess,
+# .htpasswd neu lo dat nham trong public_html, .git...) - phong ho them.
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
