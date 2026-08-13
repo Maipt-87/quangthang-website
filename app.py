@@ -46,7 +46,7 @@ DATA_FILE = DATA_DIR / "site-data.json"
 BACKUP_DIR = DATA_DIR / "backups"
 IMAGES_DIR = BASE_DIR / "imagesP"
 
-_DATA_URL_RE = re.compile(r"^data:image/(jpeg|jpg|png);base64,(.+)$", re.DOTALL)
+_DATA_URL_RE = re.compile(r"^data:image/(jpeg|jpg|png|webp);base64,(.+)$", re.DOTALL)
 
 _write_lock = threading.Lock()
 
@@ -182,10 +182,16 @@ class QuangThangHandler(http.server.SimpleHTTPRequestHandler):
         if len(raw) > MAX_IMAGE_BYTES:
             return self._send_json(400, {"error": "Anh qua lon (toi da %d MB sau khi nen)" % (MAX_IMAGE_BYTES // (1024 * 1024))})
 
+        # anh/webp la dinh dang chuan cua du an (nhe hon JPEG ~30% cung
+        # chat luong) - giu nguyen duoi file client da gui (jpeg/jpg/png/webp)
+        # thay vi ep ve .jpg nhu truoc, de khop voi dinh dang canvas thuc te
+        # da nen o trinh duyet (xem resizeImageFile trong js/admin.js).
+        ext = "jpg" if match.group(1) in ("jpeg", "jpg") else match.group(1)
+
         try:
             with _write_lock:
                 IMAGES_DIR.mkdir(parents=True, exist_ok=True)
-                dest = self._unique_image_path(self._safe_image_filename(data.get("filename")))
+                dest = self._unique_image_path(self._safe_image_filename(data.get("filename"), ext))
                 tmp = dest.with_name(dest.name + ".tmp")
                 tmp.write_bytes(raw)
                 os.replace(tmp, dest)
@@ -197,13 +203,13 @@ class QuangThangHandler(http.server.SimpleHTTPRequestHandler):
         return self._send_json(200, {"ok": True, "path": rel_path})
 
     @staticmethod
-    def _safe_image_filename(name):
-        """Chi cho phep chu/so/dau gach ngang/gach duoi trong ten file, luon .jpg -
+    def _safe_image_filename(name, ext):
+        """Chi cho phep chu/so/dau gach ngang/gach duoi trong ten file -
         tranh path traversal (../) va ky tu la lam hong duong dan tren dia."""
         name = os.path.basename(str(name or "")).strip()
         stem = name.rsplit(".", 1)[0] if "." in name else name
         stem = re.sub(r"[^A-Za-z0-9_-]+", "-", stem).strip("-")
-        return (stem or "prod-upload") + ".jpg"
+        return (stem or "prod-upload") + "." + ext
 
     @staticmethod
     def _unique_image_path(filename):
@@ -211,10 +217,10 @@ class QuangThangHandler(http.server.SimpleHTTPRequestHandler):
         path = IMAGES_DIR / filename
         if not path.exists():
             return path
-        stem = filename[:-4]  # bo duoi ".jpg" (da dam bao boi _safe_image_filename)
+        stem, suffix = path.stem, path.suffix
         i = 2
         while True:
-            candidate = IMAGES_DIR / ("%s-%d.jpg" % (stem, i))
+            candidate = IMAGES_DIR / ("%s-%d%s" % (stem, i, suffix))
             if not candidate.exists():
                 return candidate
             i += 1
