@@ -4,8 +4,9 @@
    Tông đỏ-cam ấm, cùng họ màu với logo: CORAL (phụ, eyebrow/hover) → POPPY
    (chính, nút CTA, tiêu đề nhấn) — tạo cảm giác trẻ trung, năng động, đúng
    tinh thần ngành hương liệu cao cấp, không lệch sang xanh/tím.
-   Header/topbar vẫn nền trắng-kem trung tính nên logo không bị lấn át —
-   coral/poppy chỉ xuất hiện ở nút, link, khối nhấn.
+   Header chính (menu ngang) vẫn nền trắng-kem trung tính nên logo không bị
+   lấn át — coral/poppy chỉ xuất hiện ở nút, link, khối nhấn. Topbar/footer
+   dùng riêng tông melon/peach (xem --peach).
 
    Giữ nguyên TÊN biến (--navy…, --red…), chỉ đổi GIÁ TRỊ — không phải sửa
    hàng trăm chỗ dùng var() trong file.
@@ -307,7 +308,10 @@ button { font-family: inherit; cursor: pointer; }
 }
 .cat-card:hover img { transform: scale(1.08); }
 .cat-card__body { position: relative; z-index: 2; padding: 1.6rem; }
-.cat-card h3 { color: #fff; margin-bottom: .4rem; }
+/* text-wrap:balance tự chia đều số chữ mỗi dòng khi tiêu đề xuống dòng,
+   tránh kiểu "Personal" / "Care" lệch hẳn — trình duyệt chưa hỗ trợ thì bỏ
+   qua thuộc tính này, không ảnh hưởng gì (wrap thường như trước). */
+.cat-card h3 { color: #fff; margin-bottom: .4rem; text-wrap: balance; }
 .cat-card p { color: var(--navy-300); font-size: .92rem; margin-bottom: .8rem; }
 .cat-card__link { color: #fff; font-weight: 700; font-size: .9rem; display: inline-flex; align-items: center; gap: .4rem; }
 .cat-card__link::after { content: '→'; transition: transform .25s var(--ease); }
@@ -357,10 +361,10 @@ button { font-family: inherit; cursor: pointer; }
 .section--navy .check-list li::before { background: rgba(246, 201, 181, .22); color: var(--red-400); }
 
 /* ---------------------- Câu trích trong bài viết ---------------------- */
-/* Trước dùng Sora nghiêng — Sora không có bản in nghiêng thật nên trình
-   duyệt tự nghiêng giả (oblique), nhìn hơi lệch chứ không sắc nét. Đổi sang
-   Inter nghiêng thật (đã nạp qua Google Fonts) — Inter hỗ trợ đầy đủ dấu
-   tiếng Việt, phù hợp cho câu trích tiếng Việt hơn font trang trí gốc Latin. */
+/* Dùng Inter nghiêng thật (đã nạp qua Google Fonts) thay vì Sora — Sora
+   không có bản in nghiêng thật nên trình duyệt phải tự nghiêng giả
+   (oblique), nhìn lệch chứ không sắc nét. Inter hỗ trợ đầy đủ dấu tiếng
+   Việt, phù hợp câu trích tiếng Việt hơn font trang trí gốc Latin. */
 .quote-line {
   margin: 1.6rem 0 0; padding: 1.1rem 0 1.1rem 1.4rem;
   border-left: 3px solid var(--red);
@@ -485,9 +489,8 @@ button { font-family: inherit; cursor: pointer; }
 .contact-card { padding: 1.35rem 1.1rem; border-radius: var(--radius); border: 1px solid var(--line); background: #fff; display: flex; gap: .8rem; height: 100%; }
 .contact-card__icon { width: 42px; height: 42px; flex-shrink: 0; border-radius: 12px; background: var(--navy-50); color: var(--navy); display: grid; place-items: center; font-size: 1.2rem; }
 .contact-card h3 { font-size: 1rem; margin-bottom: .3rem; }
-/* Đồng nhất màu chữ giá trị (địa chỉ, giờ làm việc) với màu số điện thoại
-   (vốn đã là var(--navy) vì là link) — trước đây địa chỉ/giờ làm việc dùng
-   màu chữ thường (var(--body)) nên trông nhạt hơn hẳn email/điện thoại. */
+/* Đồng nhất màu chữ giá trị (địa chỉ, giờ làm việc) với màu số điện thoại/
+   email (vốn đã là var(--navy) vì là link), tránh lệch tông trong cùng khối. */
 .contact-card p { font-size: .93rem; margin: 0; color: var(--navy); }
 .contact-card > div:last-child { min-width: 0; }
 /* Giờ làm việc lưu dạng nhiều dòng — giữ nguyên vị trí xuống dòng */
@@ -547,7 +550,6 @@ button { font-family: inherit; cursor: pointer; }
 
 /* ------------------------------- Footer ------------------------------- */
 .footer {
-  /* Nền melon/peach sáng sủa thay cho khối tối trước đây */
   background: linear-gradient(180deg, var(--peach-light) 0%, var(--peach) 100%);
   /* Chữ chung 1 màu — cùng tông với số điện thoại (.footer a) để đồng bộ */
   color: var(--navy-800); padding-top: clamp(3rem, 5vw, 4.5rem); font-size: .94rem;
@@ -720,10 +722,9 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
   .grid--4 { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Logo giờ đứng riêng (không còn slogan chung hàng trong header) nên hầu hết
-   độ rộng ≥1101px đã thừa chỗ. Chỉ còn dải hẹp sát ngưỡng 1101-1150px là cần
-   bóp nhẹ padding menu ngang + nút CTA để không tràn — không cần đụng tới
-   logo/brand nữa như cách cũ. */
+/* Logo đứng riêng trong header nên hầu hết độ rộng ≥1101px đã thừa chỗ cho
+   menu ngang + nút CTA. Chỉ dải hẹp sát ngưỡng 1101-1150px cần bóp nhẹ
+   padding để không tràn. */
 @media (min-width: 1101px) and (max-width: 1150px) {
   .nav__link { padding: .6rem .55rem; font-size: .9rem; }
   .nav__link::after { left: .55rem; right: .55rem; }

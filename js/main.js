@@ -28,6 +28,18 @@
     return c ? c.name : id;
   }
 
+  /* Ép xuống dòng ngay sau "Hương cho" cho MỌI tên nhóm sản phẩm, thay vì để
+     trình duyệt tự ngắt dòng theo độ rộng — nếu không, tên ngắn (vừa 1 dòng)
+     và tên dài (phải xuống 2 dòng) sẽ đẩy phần mô tả/link bên dưới lệch nhau
+     giữa các thẻ trong cùng một hàng. */
+  function catTitleHTML(name) {
+    var prefix = 'Hương cho ';
+    if (name.indexOf(prefix) === 0) {
+      return esc(prefix.trim()) + '<br>' + esc(name.slice(prefix.length));
+    }
+    return esc(name);
+  }
+
   /* ===================== 1. Thông tin liên hệ động ===================== */
   function fillSettings() {
     var s = DATA.settings;
@@ -249,7 +261,7 @@
         '<a class="cat-card reveal" data-delay="' + (i * 90) + '" href="products.html?cat=' + esc(c.id) + '">' +
           '<img src="' + esc(c.image) + '" alt="' + esc(c.name) + '" loading="lazy">' +
           '<div class="cat-card__body">' +
-            '<h3>' + esc(c.name) + '</h3>' +
+            '<h3>' + catTitleHTML(c.name) + '</h3>' +
             '<p>' + esc(c.desc) + '</p>' +
             '<span class="cat-card__link">Xem sản phẩm</span>' +
           '</div>' +
