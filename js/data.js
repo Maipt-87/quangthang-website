@@ -14,7 +14,7 @@
      này lên: bản lưu cũ trong localStorage của khách sẽ bị bỏ qua để họ thấy
      ngay nội dung mới, thay vì kẹt với bản cũ đã lưu từ trước. Dữ liệu lưu
      trên máy chủ (app.py) không bị ảnh hưởng. */
-  var CONTENT_VERSION = '2026-08-13.1';
+  var CONTENT_VERSION = '2026-08-17.1';
 
   var IMG = 'imagesP/';
 
@@ -24,12 +24,12 @@
       companyName: 'Công ty TNHH Thương mại Quang Thắng',
       shortName: 'QUANG THANG CO.,LTD',
       slogan: 'Bringing the world of Fragrances & Flavours to YOU',
-      tagline: 'Hương liệu Givaudan · Từ 1995',
+      tagline: 'Nhà phân phối hương liệu của hãng Givaudan tại Việt Nam',
       heroTitle: 'Hương liệu chuẩn quốc tế cho<br><span class="txt-accent">mỹ phẩm &amp; thực phẩm</span>',
       heroDesc: 'Quang Thắng là nhà cung cấp hương liệu về mỹ phẩm và thực phẩm của hãng Givaudan (Thụy Sĩ) — kèm hỗ trợ kỹ thuật, mẫu thử và chứng từ đầy đủ cho các đơn vị cũng như nhà máy sản xuất tại Việt Nam.',
       address: '998 Nguyễn Trãi, Phường Chợ Lớn, TP.HCM',
       email: 'info998@quangthang.vn',
-      phone: '028-3838 6338',
+      phone: '028-38591792 / 38572962 - 38386338',
       hotline: '0904 393978',
       // Mỗi dòng cách nhau bằng ký tự xuống dòng, hiển thị thành nhiều dòng
       workingHours: 'Thứ 2 – Thứ 6: 8:00 – 17:00\nThứ 7: 8:00 – 12:00',

@@ -96,7 +96,9 @@
     }
 
     linkOrHide('[data-qt-href="email"]', function (v) { return 'mailto:' + v; }, s.email);
-    linkOrHide('[data-qt-href="phone"]', function (v) { return 'tel:' + String(v).replace(/[^\d+]/g, ''); }, s.phone);
+    // s.phone có thể gồm nhiều số điện thoại bàn cách nhau bằng "/" — link
+    // tel: chỉ gọi được một số nên lấy số đầu tiên, phần hiển thị vẫn đủ cả.
+    linkOrHide('[data-qt-href="phone"]', function (v) { return 'tel:' + String(v).split('/')[0].replace(/[^\d+]/g, ''); }, s.phone);
     linkOrHide('[data-qt-href="hotline"]', function (v) { return 'tel:' + String(v).replace(/[^\d+]/g, ''); }, s.hotline);
     linkOrHide('[data-qt-href="zalo"]', function (v) { return 'https://zalo.me/' + v; }, s.zalo);
 

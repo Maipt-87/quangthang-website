@@ -761,7 +761,9 @@ table.data img.thumb { width: 54px; height: 44px; object-fit: cover; border-radi
 
 @media (max-width: 720px) {
   body { font-size: 15.5px; }
-  .topbar__list li:not(:last-child) { display: none; }
+  /* Mobisite: ưu tiên hiện địa chỉ + hotline trên header, ẩn email đi để
+     đủ chỗ trên một dòng (ul đầu là địa chỉ+email, ul sau là hotline). */
+  .topbar__list:first-of-type li:not(:first-child) { display: none; }
   .grid--2, .grid--3, .grid--4 { grid-template-columns: 1fr; }
   .form-grid { grid-template-columns: 1fr; }
   .ribbon__inner { grid-template-columns: 1fr; }
