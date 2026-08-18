@@ -1,10 +1,11 @@
 """Dong bo noi dung da chinh trong trang admin vao du lieu goc cua website.
 
 BOI CANH: khi chay web qua app.py (may chu noi bo), moi thay doi trong trang
-admin duoc luu xuong data/site-data.json - CHI tren may nay. GitHub Pages la
-host tinh (khong co may chu), nen khach truy cap website that su chi thay noi
-dung mac dinh nam trong js/data.js (bien DEFAULT_DATA). Muon noi dung da sua
-trong admin len duoc web that, phai chep no vao DEFAULT_DATA roi commit.
+admin duoc luu xuong data/site-data.json - CHI tren may nay. Hosting that cua
+quangthang.vn la host tinh (khong co may chu Python), nen khach truy cap
+website that su chi thay noi dung mac dinh nam trong js/data.js (bien
+DEFAULT_DATA). Muon noi dung da sua trong admin len duoc web that, phai chep
+no vao DEFAULT_DATA roi commit.
 
 Script nay lam dung viec do:
     1. Doc data/site-data.json (ket qua luu tu trang admin).
