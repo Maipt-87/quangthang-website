@@ -25,6 +25,43 @@
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
+  <!-- BAT-DAU-BAI-VIET (sinh tu dong boi generate_news_pages.js, dung sua tay) -->
+  <url>
+    <loc>https://quangthang.vn/news/xu-huong-huong-lieu-my-pham-2026.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://quangthang.vn/news/mo-rong-kho-bao-quan-huong-lieu.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://quangthang.vn/news/huong-vi-do-uong-trai-cay-nhiet-doi.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://quangthang.vn/news/thu-nghiem-huong-lieu-tren-nen-san-pham.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://quangthang.vn/news/huong-lieu-la-gi.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://quangthang.vn/news/cach-chon-huong-lieu-my-pham-handmade.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://quangthang.vn/news/ung-dung-huong-lieu-givaudan-thuc-pham.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <!-- KET-THUC-BAI-VIET -->
   <url>
     <loc>https://quangthang.vn/contact.html</loc>
     <changefreq>yearly</changefreq>

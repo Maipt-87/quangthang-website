@@ -345,7 +345,7 @@
             '<div class="news-card__meta"><span class="tag">' + esc(n.category) + '</span><time datetime="' + esc(n.date) + '">' + formatDate(n.date) + '</time></div>' +
             '<h3>' + esc(n.title) + '</h3>' +
             '<p>' + esc(n.excerpt) + '</p>' +
-            '<div class="card__foot"><button type="button" class="btn btn--sm btn--outline" data-news="' + esc(n.id) + '">Đọc tiếp</button></div>' +
+            '<div class="card__foot"><a class="btn btn--sm btn--outline" href="news/' + esc(n.slug) + '.html">Đọc tiếp</a></div>' +
           '</div>' +
         '</article>';
     }).join('');
@@ -487,18 +487,13 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // mở chi tiết sản phẩm / tin tức (event delegation cho nội dung render động)
+    // mở chi tiết sản phẩm (event delegation cho nội dung render động) —
+    // tin tức không dùng modal nữa, mỗi bài có trang riêng trong news/
     document.addEventListener('click', function (e) {
       var pBtn = e.target.closest('[data-detail]');
       if (pBtn) {
         var p = DATA.products.filter(function (x) { return x.id === pBtn.getAttribute('data-detail'); })[0];
         if (p) openModal(productDetailHTML(p));
-        return;
-      }
-      var nBtn = e.target.closest('[data-news]');
-      if (nBtn) {
-        var n = DATA.news.filter(function (x) { return x.id === nBtn.getAttribute('data-news'); })[0];
-        if (n) openModal(newsDetailHTML(n));
       }
     });
   }
@@ -530,18 +525,6 @@
           '</div>' +
           '<p class="form-note" style="margin-top:1rem">Tài liệu kỹ thuật (TDS/MSDS/COA) được cung cấp sau khi xác nhận thông tin doanh nghiệp.</p>' +
         '</div>' +
-      '</div>';
-  }
-
-  function newsDetailHTML(n) {
-    return '' +
-      '<button type="button" class="modal__close" aria-label="Đóng">×</button>' +
-      '<div class="modal__media" style="max-height:280px;overflow:hidden"><img src="' + esc(n.image) + '" alt="' + esc(n.title) + '" style="width:100%;height:280px;object-fit:cover"></div>' +
-      '<div class="modal__body">' +
-        '<div class="news-card__meta"><span class="tag">' + esc(n.category) + '</span><time>' + formatDate(n.date) + '</time></div>' +
-        '<h2>' + esc(n.title) + '</h2>' +
-        String(n.content || n.excerpt).split('\n').filter(function (x) { return x.trim(); })
-          .map(function (para) { return '<p>' + esc(para.trim()) + '</p>'; }).join('') +
       '</div>';
   }
 
