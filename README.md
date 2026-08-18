@@ -96,7 +96,8 @@ Website xử lý theo thứ tự sau khi khách bấm gửi:
 | `about.html` | Về chúng tôi — câu chuyện 30 năm, dòng thời gian, chứng nhận |
 | `products.html` | Danh mục sản phẩm, lọc và tìm kiếm |
 | `industries.html` | Ứng dụng theo ngành, quy trình làm việc |
-| `news.html` | Tin tức & xu hướng |
+| `news.html` | Tin tức & xu hướng — danh sách bài viết |
+| `news/<slug>.html` | Trang riêng cho từng bài viết (SEO — title/meta/URL riêng), sinh tự động bởi `generate_news_pages.js` |
 | `contact.html` | Liên hệ, bản đồ, form yêu cầu báo giá |
 | `privacy.html` | Chính sách bảo vệ dữ liệu cá nhân |
 | `admin.html` | Trang quản trị nội dung |
@@ -107,6 +108,7 @@ Website xử lý theo thứ tự sau khi khách bấm gửi:
 | `js/admin.js` | Chức năng trang quản trị |
 | `app.py` | Máy chủ nội bộ + API lưu nội dung |
 | `sync_admin_data.py` | Đồng bộ nội dung đã sửa trong admin vào `js/data.js` trước khi commit |
+| `generate_news_pages.js` | Sinh lại toàn bộ trang `news/<slug>.html` + cập nhật `sitemap.xml` từ `js/data.js` — chạy `node generate_news_pages.js` mỗi khi thêm/sửa bài Tin tức |
 | `assets/` | Logo, favicon |
 | `imagesP/` | Thư viện ảnh dùng cho sản phẩm và bài viết |
 | `robots.txt`, `sitemap.xml` | Cấu hình SEO — chặn crawl `admin.html` |
