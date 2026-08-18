@@ -1,3 +1,11 @@
+# Ep toan bo truy cap chuyen sang HTTPS - neu khach vao bang http:// (go tay,
+# link cu, bookmark cu...) se tu dong chuyen sang https:// thay vi tai trang
+# qua ket noi khong ma hoa. Quan trong vi website co form lien he thu thap
+# ten/email/so dien thoai khach hang.
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
 # Bao ve trang admin.html bang HTTP Basic Auth (Apache kiem tra o may chu,
 # khong the vuot qua bang cach sua JavaScript trong trinh duyet - day la
 # lop bao mat THAT, khac voi lop kiem tra mat khau trong js/admin.js chi
