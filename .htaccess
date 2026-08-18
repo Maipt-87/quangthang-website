@@ -28,3 +28,8 @@ RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 <FilesMatch "^\.">
   Require all denied
 </FilesMatch>
+
+# Dung trang 404.html rieng cua website khi khach vao duong dan khong ton
+# tai, thay vi trang loi mac dinh cua may chu (khong co logo/menu, trong
+# thieu chuyen nghiep).
+ErrorDocument 404 /404.html
