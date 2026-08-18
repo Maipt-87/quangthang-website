@@ -20,17 +20,29 @@ python app.py
 Mở <http://localhost:8000>. Ở chế độ này, nội dung sửa trong admin được lưu
 xuống file `data/site-data.json` nên mọi máy truy cập đều thấy cùng dữ liệu.
 
-## Xuất bản lên GitHub Pages
+## Xuất bản lên hosting thật (quangthang.vn)
 
-Repo này chạy được trực tiếp trên GitHub Pages (toàn bộ là file tĩnh):
+Website chạy trên hosting cPanel/Apache tự quản lý, **không** dùng GitHub
+Pages và **không có auto-deploy** — mọi thay đổi phải đưa lên thủ công:
 
-1. Vào **Settings → Pages** của repo
-2. Mục **Source**, chọn nhánh `main` và thư mục `/ (root)`
-3. Lưu lại — sau 1–2 phút website có tại
-   `https://<tên-tài-khoản>.github.io/<tên-repo>/`
+1. Vào repo trên GitHub → nút xanh **Code** → **Download ZIP**.
+2. Giải nén file ZIP vừa tải.
+3. Đăng nhập **cPanel → File Manager → public_html**.
+4. Upload các file/thư mục vừa giải nén **thẳng vào gốc `public_html`**
+   (không tạo thư mục con — cPanel Extract mặc định tạo thư mục con theo tên
+   ZIP, nếu vậy phải chuyển hết nội dung ra ngoài rồi xoá thư mục con đi), cho
+   phép ghi đè khi được hỏi.
+5. Hard refresh (Ctrl+Shift+R) khi kiểm tra lại `quangthang.vn` để tránh dính
+   cache trình duyệt cũ.
 
-Khi chạy trên GitHub Pages không có máy chủ Python, website **tự động** chuyển
-sang lưu bằng localStorage — không cần sửa dòng code nào.
+Vì hosting này không có máy chủ Python (`app.py` không chạy trên server
+thật), website tự động chuyển sang lưu bằng localStorage của trình duyệt —
+không cần sửa dòng code nào.
+
+File `.htpasswd` (mật khẩu Basic Auth cho `admin.html`, xem `.htaccess`)
+**không nằm trong ZIP** vì bị gitignore — phải tự upload thủ công qua File
+Manager vào `/home/<user>/` (một cấp **trên** `public_html`), không đưa lên
+qua Git vì repo này public.
 
 ## Trang quản trị
 
@@ -41,7 +53,9 @@ website giữ.
 Quản lý sản phẩm, nhóm sản phẩm, ứng dụng ngành, tin tức, yêu cầu liên hệ
 (xuất CSV) và cấu hình website; xuất/nhập dữ liệu dạng JSON. Ảnh sản phẩm có
 thể tải trực tiếp từ máy (tự nén, tự lưu vào `imagesP/` khi chạy `app.py`,
-hoặc commit thẳng lên GitHub nếu đã khai báo Token trong mục Cấu hình).
+hoặc commit thẳng lên GitHub nếu đã khai báo Token trong mục Cấu hình — vẫn
+cần tải ZIP mới và upload đè lên `public_html` qua cPanel thì ảnh mới hiện
+trên trang thật, vì hosting hiện tại không tự động build lại từ GitHub).
 
 **Đổi mật khẩu:** mở Console của trình duyệt tại trang admin, chạy
 `QTAdminHash('mật khẩu mới')`, rồi dán chuỗi nhận được vào `PASS_HASH` trong
@@ -53,10 +67,11 @@ xác thực. Lớp này chỉ ngăn người ngoài vô tình sửa nội dung �
 nghiêm túc phải chuyển xác thực về máy chủ.
 
 **Đưa nội dung admin lên website thật:** khi chạy qua `app.py`, nội dung sửa
-trong admin chỉ lưu ở `data/site-data.json` trên máy đang chạy — GitHub Pages
-là host tĩnh nên không đọc được file này. Chạy `python sync_admin_data.py` để
-chép nội dung đó vào `js/data.js` (nội dung mặc định mà mọi khách truy cập
-đều thấy), rồi commit + push như bình thường.
+trong admin chỉ lưu ở `data/site-data.json` trên máy đang chạy — hosting hiện
+tại là host tĩnh nên không đọc được file này. Chạy `python sync_admin_data.py`
+để chép nội dung đó vào `js/data.js` (nội dung mặc định mà mọi khách truy cập
+đều thấy), rồi commit + push như bình thường, sau đó xuất bản theo hướng dẫn
+ở mục "Xuất bản lên hosting thật" phía trên.
 
 ## Nhận yêu cầu báo giá từ khách
 
@@ -64,8 +79,9 @@ Website xử lý theo thứ tự sau khi khách bấm gửi:
 
 1. **Đã khai báo endpoint** trong admin → *Cấu hình website* → *Địa chỉ nhận
    form*: yêu cầu được gửi thẳng tới email công ty. Đây là cách duy nhất hoạt
-   động trên GitHub Pages. Tạo form miễn phí tại [formspree.io](https://formspree.io),
-   copy địa chỉ endpoint dạng `https://formspree.io/f/xxxxxxx` rồi dán vào.
+   động trên hosting tĩnh hiện tại (quangthang.vn). Tạo form miễn phí tại
+   [formspree.io](https://formspree.io), copy địa chỉ endpoint dạng
+   `https://formspree.io/f/xxxxxxx` rồi dán vào.
 2. **Chạy qua `app.py`**: yêu cầu lưu vào `data/site-data.json`, quản trị viên
    mở trang admin là thấy ngay ở mục *Yêu cầu liên hệ*.
 3. **Không có cả hai**: website **không báo "đã gửi thành công"** mà hiển thị

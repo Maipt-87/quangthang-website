@@ -40,8 +40,7 @@
   };
 
   var DATA = window.QTData.load();
-  /* Toàn bộ ảnh thật đang dùng trong imagesP/ — thay cho dãy ảnh số cũ
-     (1.jpg…50.jpg) đã xoá khỏi dự án vì không còn nơi nào tham chiếu tới. */
+  /* Danh sách ảnh thật trong imagesP/ để chọn khi thêm/sửa sản phẩm. */
   var IMAGE_POOL = [
     'imagesP/prod-hero.webp',
     'imagesP/prod-bloom-elegance.webp',
@@ -830,7 +829,7 @@
           '<input type="url" name="formEndpoint" value="' + esc(s.formEndpoint || '') +
           '" placeholder="https://formspree.io/f/xxxxxxx">', true) +
       '</div>' +
-      '<p class="form-note"><b>Quan trọng khi website chạy trên host tĩnh (GitHub Pages):</b> ' +
+      '<p class="form-note"><b>Quan trọng khi website chạy trên hosting hiện tại (không có máy chủ backend):</b> ' +
       'nếu để trống ô này, yêu cầu của khách chỉ nằm trong trình duyệt của chính họ và ' +
       '<b>không đến được hộp thư công ty</b>. Hãy tạo một form miễn phí tại ' +
       '<a href="https://formspree.io" target="_blank" rel="noopener">formspree.io</a> ' +
@@ -874,7 +873,7 @@
       '</div></form>' +
 
       '<div class="panel" id="gh-config-panel"><h2>Tải ảnh lên trực tiếp (khi chạy trên host tĩnh)</h2>' +
-        '<p class="form-note">Khi chạy qua <code>app.py</code>, nút “Tải ảnh lên từ máy” ở phần chỉnh sửa sản phẩm/nhóm/ứng dụng/tin tức hoạt động ngay, không cần mục này. Khi website chạy trên host tĩnh như GitHub Pages, khai báo thông tin bên dưới để admin tự tải ảnh mới thẳng vào kho mã nguồn — web tự build lại sau khoảng 1 phút, không cần nhờ hỗ trợ kỹ thuật.</p>' +
+        '<p class="form-note">Khi chạy qua <code>app.py</code>, nút “Tải ảnh lên từ máy” ở phần chỉnh sửa sản phẩm/nhóm/ứng dụng/tin tức hoạt động ngay, không cần mục này. Trên hosting hiện tại (quangthang.vn), khai báo thông tin bên dưới để admin tự đưa ảnh mới thẳng vào kho mã nguồn trên GitHub — nhưng <b>vẫn cần tải ZIP mới từ GitHub và upload đè lên public_html qua cPanel</b> thì ảnh mới hiện lên trang thật, vì hosting này không tự động build lại từ GitHub.</p>' +
         '<div class="form-grid">' +
           field('Chủ sở hữu repo (owner)', '<input type="text" id="gh-owner" placeholder="VD: Maipt-87">') +
           field('Tên repo', '<input type="text" id="gh-repo" placeholder="VD: quangthang-website">') +
@@ -1123,9 +1122,11 @@
      dự án) trước khi lưu, theo 3 chế độ tuỳ nơi website đang chạy:
        1. Qua app.py (máy chủ nội bộ): gửi thẳng lên máy chủ, ghi file thật
           vào imagesP/ — hoạt động ngay, không cần cấu hình gì thêm.
-       2. Host tĩnh (GitHub Pages) + đã khai báo GitHub Token trong mục
-          Cấu hình website: ảnh được commit thẳng vào repo qua GitHub API,
-          web tự build lại sau khoảng 1 phút.
+       2. Host tĩnh (hosting hiện tại của quangthang.vn) + đã khai báo GitHub
+          Token trong mục Cấu hình website: ảnh được commit thẳng vào repo
+          qua GitHub API, nhưng vẫn cần tải ZIP mới và upload đè lên
+          public_html qua cPanel thì mới hiện trên trang thật — hosting này
+          không tự động build lại từ GitHub như GitHub Pages trước đây.
        3. Host tĩnh, CHƯA khai báo Token: ảnh chỉ lưu tạm trong trình duyệt
           hiện tại để xem thử ngay — không hiện với khách khác, admin sẽ
           được cảnh báo rõ để tự cấu hình hoặc nhờ thêm file. */
