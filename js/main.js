@@ -106,6 +106,42 @@
     if (map1 && s.mapEmbed) map1.src = s.mapEmbed;
   }
 
+  /* Dữ liệu có cấu trúc Organization/LocalBusiness (JSON-LD) — giúp Google
+     hiểu đây là công ty gì, địa chỉ, liên hệ ra sao, hỗ trợ hiển thị đẹp hơn
+     trên kết quả tìm kiếm. Đọc trực tiếp từ DATA.settings nên luôn khớp với
+     thông tin admin đã cập nhật, không cần sửa tay ở từng trang HTML. */
+  function injectOrgSchema() {
+    var s = DATA.settings;
+    var addrParts = String(s.address || '').split(',').map(function (p) { return p.trim(); }).filter(Boolean);
+    var schema = {
+      '@context': 'https://schema.org',
+      '@type': 'LocalBusiness',
+      name: s.companyName,
+      alternateName: s.shortName,
+      url: 'https://quangthang.vn/',
+      logo: 'https://quangthang.vn/assets/logo-h.png',
+      image: 'https://quangthang.vn/assets/logo-h.png',
+      description: s.heroDesc,
+      email: s.email,
+      telephone: s.hotline,
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: addrParts.slice(0, addrParts.length - 1).join(', '),
+        addressLocality: addrParts[addrParts.length - 1] || '',
+        addressCountry: 'VN'
+      },
+      areaServed: 'VN'
+    };
+    var el = document.getElementById('qt-org-schema');
+    if (!el) {
+      el = document.createElement('script');
+      el.type = 'application/ld+json';
+      el.id = 'qt-org-schema';
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(schema);
+  }
+
   /** Một trường được coi là đã điền khi không rỗng và không còn dấu [CẬP NHẬT]. */
   function isReady(value) {
     var v = String(value == null ? '' : value).trim();
@@ -702,6 +738,7 @@
   /* ============================== Khởi tạo ============================ */
   document.addEventListener('DOMContentLoaded', function () {
     fillSettings();
+    injectOrgSchema();
     initHeader();
     initHero();
     renderCategories();
