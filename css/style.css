@@ -32,6 +32,10 @@
   --red-400: #e6977a;    /* nhấn trên nền tối (footer) */
   --red-100: #fbe4da;    /* nền phấn coral nhạt */
 
+  /* Đỏ thương hiệu Givaudan (lấy đúng từ file logo GIV_LM_TrueRed) — dùng
+     riêng khi nhắc tên "Givaudan" trong chữ, không lẫn với coral của site */
+  --givaudan-red: #d30a25;
+
   /* Melon/Peach — nền sáng cho topbar & footer, chữ đổi sang tối để đủ tương phản */
   --peach: #f4b48c;
   --peach-light: #f8cead;
@@ -122,6 +126,8 @@ button { font-family: inherit; cursor: pointer; }
 .txt-brand { color: var(--amber); }
 /* Tên công ty trên nền sáng */
 .txt-navy { color: var(--navy); }
+/* Chữ "Givaudan" khi nhắc trong nội dung — đúng màu đỏ thương hiệu của hãng */
+.txt-givaudan { color: var(--givaudan-red); }
 
 /* --------------------------- Section heading --------------------------- */
 .eyebrow {
@@ -237,15 +243,6 @@ button { font-family: inherit; cursor: pointer; }
 }
 .hero__badge b { color: var(--red-400); }
 .hero h1 { color: #fff; margin-bottom: .5rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .6), 0 12px 34px rgba(0, 0, 0, .45); }
-/* Logo hãng đối tác chèn ngay trong H1 trang chủ — dòng chứa logo là 1 khối
-   flex (display:flex tự tách dòng riêng như block, không cần <br>), canh
-   logo theo chiều cao dòng thật bằng align-items:center thay vì dựa vào
-   vertical-align/baseline vốn rất dễ lệch giữa các trình duyệt. */
-.hero h1 .line--brand { display: flex; align-items: center; gap: .3em; }
-.hero h1 .brand-mark {
-  width: 1em; height: 1em; flex-shrink: 0; object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .6)) drop-shadow(0 12px 34px rgba(0, 0, 0, .45));
-}
 /* Slogan thương hiệu — đặt ngay dưới H1, chỗ dễ thấy nhất trên trang chủ,
    không cần cuộn. Chữ nghiêng + màu nhấn để phân biệt với H1 (tiếng Việt,
    to, đậm) mà không cạnh tranh sự chú ý — nhưng vẫn phải đủ lớn (khoảng 1/3
