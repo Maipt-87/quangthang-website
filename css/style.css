@@ -226,9 +226,8 @@ button { font-family: inherit; cursor: pointer; }
   transform: scale(1.08); transition: opacity 1.3s var(--ease), transform 7s linear;
 }
 .hero__slide.is-active { opacity: 1; transform: scale(1); }
-/* THỬ NGHIỆM: bỏ lớp phủ gradient trên slide banner trang chủ, giữ đúng màu
-   ảnh gốc — chờ xác nhận trước khi commit. Dùng text-shadow + nền mờ sau
-   badge để chữ vẫn đọc rõ trên mọi ảnh nền thay vì phủ màu lên ảnh. */
+/* Banner trang chủ giữ đúng màu ảnh gốc, không phủ gradient — chữ đọc rõ
+   nhờ text-shadow, badge có nền mờ riêng, không phụ thuộc màu ảnh nền. */
 .hero__inner { position: relative; z-index: 2; padding: 5.5rem 0; max-width: 760px; }
 .hero__badge {
   display: inline-flex; align-items: center; gap: .6rem; padding: .5rem 1.05rem;
@@ -238,6 +237,21 @@ button { font-family: inherit; cursor: pointer; }
 }
 .hero__badge b { color: var(--red-400); }
 .hero h1 { color: #fff; margin-bottom: .5rem; text-shadow: 0 2px 8px rgba(0, 0, 0, .6), 0 12px 34px rgba(0, 0, 0, .45); }
+/* Logo hãng đối tác chèn ngay trong H1 trang chủ — dòng chứa logo là 1 khối
+   flex (display:flex tự tách dòng riêng như block, không cần <br>), canh
+   logo theo chiều cao dòng thật bằng align-items:center thay vì dựa vào
+   vertical-align/baseline vốn rất dễ lệch giữa các trình duyệt. */
+.hero h1 .line--brand { display: flex; align-items: center; gap: .3em; }
+.hero h1 .brand-mark {
+  width: 1em; height: 1em; flex-shrink: 0; object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, .6)) drop-shadow(0 12px 34px rgba(0, 0, 0, .45));
+  opacity: 0; transform: scale(.82);
+  animation: heroBrandIn .55s cubic-bezier(.2, .8, .2, 1) .35s forwards;
+}
+@keyframes heroBrandIn { to { opacity: 1; transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 .brand-mark { animation: none; opacity: 1; transform: none; }
+}
 /* Slogan thương hiệu — đặt ngay dưới H1, chỗ dễ thấy nhất trên trang chủ,
    không cần cuộn. Chữ nghiêng + màu nhấn để phân biệt với H1 (tiếng Việt,
    to, đậm) mà không cạnh tranh sự chú ý — nhưng vẫn phải đủ lớn (khoảng 1/3
@@ -351,6 +365,20 @@ button { font-family: inherit; cursor: pointer; }
 }
 .split__badge b { display: block; font-family: var(--font-display); font-size: 1.7rem; line-height: 1; }
 .split__badge span { font-size: .82rem; color: var(--red-400); }
+
+/* Huy hiệu "Đối tác chính thức" — logo hãng đối tác + nhãn, đặt ở đầu cột
+   chữ tại mục nói riêng về hợp tác với hãng đó. Quầng trắng mờ dần (thay vì
+   khối tròn viền cứng) để logo hoà vào nền thay vì trông như dán nhãn cứng. */
+.partner-badge { display: inline-flex; align-items: center; gap: .6rem; margin-bottom: 1.1rem; }
+.partner-badge__mark {
+  width: 48px; height: 48px; display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(circle, rgba(255, 255, 255, .98) 0%, rgba(255, 255, 255, .98) 52%, rgba(255, 255, 255, 0) 78%);
+  padding: 9px; flex-shrink: 0;
+}
+.partner-badge__mark img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .12)); }
+.partner-badge__text { display: flex; flex-direction: column; line-height: 1.2; }
+.partner-badge__text b { font-family: var(--font-display); font-size: .82rem; color: var(--ink); }
+.partner-badge__text span { font-size: .72rem; color: var(--muted); }
 
 .check-list { list-style: none; padding: 0; margin: 0 0 1.6rem; }
 .check-list li { position: relative; padding-left: 2rem; margin-bottom: .7rem; }
