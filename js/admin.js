@@ -257,6 +257,15 @@
       '</div>' +
 
       '<div class="panel">' +
+        '<div class="panel__head"><h2>Lượt truy cập website</h2></div>' +
+        '<p class="form-note">Website đã cài sẵn Google Analytics — số liệu khách truy cập thật ' +
+          '(đang online, lượt xem trang, nguồn traffic...) được đo trực tiếp trên trình duyệt khách và ' +
+          'xem chính xác nhất tại Google Analytics, thay vì đếm lại bằng code admin (dễ sai lệch vì ' +
+          'website không có máy chủ chạy thường trực để đếm khách thật trên mọi thiết bị).</p>' +
+        '<a class="btn btn--primary btn--sm" href="https://analytics.google.com/" target="_blank" rel="noopener">Mở Google Analytics ↗</a>' +
+      '</div>' +
+
+      '<div class="panel">' +
         '<div class="panel__head"><h2>Yêu cầu liên hệ mới nhất</h2>' +
           '<button class="btn btn--sm btn--outline" type="button" data-goto="quotes">Xem tất cả</button></div>' +
         (DATA.quotes.length ? tableQuotes(DATA.quotes.slice(0, 5)) :
