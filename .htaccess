@@ -1,3 +1,12 @@
+# Tat mod_pagespeed cua hosting - module nay tu dong toi uu/cache lai trang
+# o phia may chu, TACH BIET voi cache trinh duyet va voi cache-bust ?v= cua
+# website. Da phat hien no phuc vu ban CU cua trang (thieu logo Givaudan moi
+# them) du file that tren server da cap nhat dung, va cache nay co the khac
+# nhau giua www.quangthang.vn va quangthang.vn. Website da tu nen anh WebP
+# va CSS/JS gon nhe nen loi ich cua mod_pagespeed khong dang de doi lay rui
+# ro hien thi noi dung cu.
+ModPagespeed off
+
 # Ep toan bo truy cap chuyen sang HTTPS - neu khach vao bang http:// (go tay,
 # link cu, bookmark cu...) se tu dong chuyen sang https:// thay vi tai trang
 # qua ket noi khong ma hoa. Quan trong vi website co form lien he thu thap
