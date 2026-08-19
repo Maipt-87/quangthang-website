@@ -106,7 +106,7 @@ function pageHTML(n) {
 '<link rel="preconnect" href="https://fonts.googleapis.com">\n' +
 '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n' +
 '<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@1,600;1,700&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">\n' +
-'<link rel="stylesheet" href="../css/style.css?v=20260805c">\n' +
+'<link rel="stylesheet" href="../css/style.css?v=20260805d">\n' +
 '</head>\n' +
 '<body data-page="news">\n\n' +
 '<header class="header">\n' +
@@ -243,8 +243,8 @@ function pageHTML(n) {
 '  <a class="fab__zalo" data-qt-href="zalo" href="#" target="_blank" rel="noopener" aria-label="Chat Zalo">Zalo</a>\n' +
 '  <button class="fab__top" type="button" aria-label="Lên đầu trang">↑</button>\n' +
 '</div>\n\n' +
-'<script src="../js/data.js?v=20260805c"></script>\n' +
-'<script src="../js/main.js?v=20260805c"></script>\n' +
+'<script src="../js/data.js?v=20260805d"></script>\n' +
+'<script src="../js/main.js?v=20260805d"></script>\n' +
 '</body>\n</html>\n';
 }
 

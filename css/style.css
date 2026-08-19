@@ -130,8 +130,11 @@ button { font-family: inherit; cursor: pointer; }
 /* Font chữ thật của Givaudan (Futura Now) là font thương mại có bản quyền,
    không có trên Google Fonts — dùng Jost làm phương án thay thế hợp pháp,
    font sans hình học gần nhất với Futura, phổ biến để thay thế Futura khi
-   không có giấy phép. */
-.txt-givaudan { color: var(--givaudan-red); font-family: 'Jost', var(--font-display); font-weight: 600; letter-spacing: .01em; }
+   không có giấy phép. Jost có chiều cao chữ (cap-height) nhỏ hơn khoảng 13%
+   so với Sora ở cùng cỡ chữ (đã đo thực tế bằng canvas) — dù cùng font-size
+   vẫn trông nhỏ hơn rõ rệt cạnh chữ Sora, nên bù lại bằng cách tăng cỡ chữ
+   lên ~15% để chiều cao hiển thị thật sự bằng với phần chữ Sora xung quanh. */
+.txt-givaudan { color: var(--givaudan-red); font-family: 'Jost', var(--font-display); font-weight: 600; letter-spacing: .01em; font-size: 1.15em; }
 
 /* --------------------------- Section heading --------------------------- */
 .eyebrow {
