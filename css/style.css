@@ -127,7 +127,11 @@ button { font-family: inherit; cursor: pointer; }
 /* Tên công ty trên nền sáng */
 .txt-navy { color: var(--navy); }
 /* Chữ "Givaudan" khi nhắc trong nội dung — đúng màu đỏ thương hiệu của hãng */
-.txt-givaudan { color: var(--givaudan-red); }
+/* Font chữ thật của Givaudan (Futura Now) là font thương mại có bản quyền,
+   không có trên Google Fonts — dùng Jost làm phương án thay thế hợp pháp,
+   font sans hình học gần nhất với Futura, phổ biến để thay thế Futura khi
+   không có giấy phép. */
+.txt-givaudan { color: var(--givaudan-red); font-family: 'Jost', var(--font-display); font-weight: 600; letter-spacing: .01em; }
 
 /* --------------------------- Section heading --------------------------- */
 .eyebrow {
