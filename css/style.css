@@ -134,7 +134,10 @@ button { font-family: inherit; cursor: pointer; }
    so với Sora ở cùng cỡ chữ (đã đo thực tế bằng canvas) — dù cùng font-size
    vẫn trông nhỏ hơn rõ rệt cạnh chữ Sora, nên bù lại bằng cách tăng cỡ chữ
    lên ~15% để chiều cao hiển thị thật sự bằng với phần chữ Sora xung quanh. */
-.txt-givaudan { color: var(--givaudan-red); font-family: 'Jost', var(--font-display); font-weight: 600; letter-spacing: .01em; font-size: 1.15em; }
+/* Jost có cap-height nhỏ hơn Sora ~4% ở cùng cỡ chữ (đo trực tiếp bằng
+   canvas: Sora 73px vs Jost 70px tại 100px) — bù đúng 1.05em để cao chữ
+   hoa khớp với phần còn lại của tiêu đề, không lớn hơn hẳn gây lệch mắt. */
+.txt-givaudan { color: var(--givaudan-red); font-family: 'Jost', var(--font-display); font-weight: 600; letter-spacing: .01em; font-size: 1.05em; }
 
 /* --------------------------- Section heading --------------------------- */
 .eyebrow {
