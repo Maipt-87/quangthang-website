@@ -636,11 +636,17 @@
     /* Gửi yêu cầu tới công ty.
        1. Nếu quản trị đã khai báo formEndpoint (Formspree/EmailJS…) → gửi thẳng
           tới email công ty, hoạt động cả trên host tĩnh như GitHub Pages.
+          Riêng "Yêu cầu báo giá" ưu tiên dùng quoteFormEndpoint (nếu có khai
+          báo) để vào thẳng hộp thư nhân sự phụ trách báo giá.
        2. Nếu website chạy qua app.py → yêu cầu đã nằm trong file trên máy chủ,
           quản trị mở trang admin là thấy.
        3. Còn lại → không có kênh nào gửi được, phải báo thật cho khách. */
     function deliver(record) {
-      var endpoint = DATA.settings.formEndpoint;
+      // Yêu cầu báo giá dùng endpoint riêng (quoteFormEndpoint) nếu quản trị
+      // đã khai báo — để vào thẳng hộp thư một nhân sự cụ thể thay vì hộp
+      // thư chung. Chưa khai báo thì tự dùng lại endpoint chung như cũ.
+      var endpoint = (record.type === 'Yêu cầu báo giá' && DATA.settings.quoteFormEndpoint) ||
+        DATA.settings.formEndpoint;
       if (!endpoint) return Promise.resolve(null);
       // _subject và _replyto là 2 trường đặc biệt Formspree tự nhận diện: đặt
       // tiêu đề email rõ loại yêu cầu (để lọc Gmail theo "[Yêu cầu báo giá]")

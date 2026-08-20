@@ -14,7 +14,7 @@
      này lên: bản lưu cũ trong localStorage của khách sẽ bị bỏ qua để họ thấy
      ngay nội dung mới, thay vì kẹt với bản cũ đã lưu từ trước. Dữ liệu lưu
      trên máy chủ (app.py) không bị ảnh hưởng. */
-  var CONTENT_VERSION = '2026-08-19.1';
+  var CONTENT_VERSION = '2026-08-19.2';
 
   var IMG = 'imagesP/';
 
@@ -40,6 +40,12 @@
          yêu cầu của khách được gửi thẳng tới email công ty — cần thiết khi
          website chạy trên host tĩnh như GitHub Pages (không có máy chủ). */
       formEndpoint: 'https://formspree.io/f/xwleedde',
+      /* Endpoint RIÊNG cho loại yêu cầu "Yêu cầu báo giá" — để trống thì các
+         yêu cầu báo giá vẫn dùng chung formEndpoint ở trên. Điền vào đây khi
+         muốn báo giá vào thẳng hộp thư một nhân sự cụ thể (VD: mai.pham@...),
+         tách khỏi hộp thư chung. Tạo form Formspree thứ 2, đặt email nhận là
+         hộp thư mong muốn, dán endpoint vào đây. */
+      quoteFormEndpoint: '',
       mapEmbed: 'https://www.google.com/maps?q=998+Nguy%E1%BB%85n+Tr%C3%A3i,+Ph%C6%B0%E1%BB%9Dng+Ch%E1%BB%A3+L%E1%BB%9Bn,+TP.HCM&output=embed',
       stats: [
         { value: 30, suffix: '+', label: 'Năm kinh nghiệm từ 1995' },

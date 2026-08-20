@@ -837,7 +837,13 @@
         field('Địa chỉ nhận form liên hệ (endpoint)',
           '<input type="url" name="formEndpoint" value="' + esc(s.formEndpoint || '') +
           '" placeholder="https://formspree.io/f/xxxxxxx">', true) +
+        field('Địa chỉ nhận riêng cho "Yêu cầu báo giá" (không bắt buộc)',
+          '<input type="url" name="quoteFormEndpoint" value="' + esc(s.quoteFormEndpoint || '') +
+          '" placeholder="https://formspree.io/f/yyyyyyy">', true) +
       '</div>' +
+      '<p class="form-note">Để trống ô "báo giá" ở trên thì loại yêu cầu này vẫn dùng chung endpoint ' +
+      'chính. Muốn yêu cầu báo giá vào thẳng hộp thư một nhân sự cụ thể (VD: mai.pham@quangthang.vn), ' +
+      'tạo thêm 1 form Formspree thứ hai (miễn phí) với email nhận là hộp thư đó, rồi dán endpoint vào ô này.</p>' +
       '<p class="form-note"><b>Quan trọng khi website chạy trên hosting hiện tại (không có máy chủ backend):</b> ' +
       'nếu để trống ô này, yêu cầu của khách chỉ nằm trong trình duyệt của chính họ và ' +
       '<b>không đến được hộp thư công ty</b>. Hãy tạo một form miễn phí tại ' +
@@ -933,7 +939,7 @@
       var fd = new FormData(e.target);
 
       ['companyName', 'address', 'email', 'taxCode', 'phone', 'hotline', 'zalo', 'workingHours', 'formEndpoint',
-        'mapEmbed', 'heroTitle', 'heroDesc', 'slogan', 'tagline'].forEach(function (k) {
+        'quoteFormEndpoint', 'mapEmbed', 'heroTitle', 'heroDesc', 'slogan', 'tagline'].forEach(function (k) {
         DATA.settings[k] = String(fd.get(k) || '').trim();
       });
 
