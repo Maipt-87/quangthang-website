@@ -642,10 +642,17 @@
     function deliver(record) {
       var endpoint = DATA.settings.formEndpoint;
       if (!endpoint) return Promise.resolve(null);
+      // _subject và _replyto là 2 trường đặc biệt Formspree tự nhận diện: đặt
+      // tiêu đề email rõ loại yêu cầu (để lọc Gmail theo "[Yêu cầu báo giá]")
+      // và cho phép bấm Trả lời để nhắn thẳng cho khách, không phải Formspree.
+      var payload = {};
+      Object.keys(record).forEach(function (k) { payload[k] = record[k]; });
+      payload._subject = '[' + record.type + '] ' + record.name + (record.company ? ' - ' + record.company : '');
+      payload._replyto = record.email;
       return fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(record)
+        body: JSON.stringify(payload)
       }).then(function (res) {
         return res.ok;
       }).catch(function () {
