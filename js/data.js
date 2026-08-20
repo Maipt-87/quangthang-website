@@ -14,7 +14,7 @@
      này lên: bản lưu cũ trong localStorage của khách sẽ bị bỏ qua để họ thấy
      ngay nội dung mới, thay vì kẹt với bản cũ đã lưu từ trước. Dữ liệu lưu
      trên máy chủ (app.py) không bị ảnh hưởng. */
-  var CONTENT_VERSION = '2026-08-19.3';
+  var CONTENT_VERSION = '2026-08-19.4';
 
   var IMG = 'imagesP/';
 
@@ -45,7 +45,7 @@
          muốn báo giá vào thẳng hộp thư một nhân sự cụ thể (VD: mai.pham@...),
          tách khỏi hộp thư chung. Tạo form Formspree thứ 2, đặt email nhận là
          hộp thư mong muốn, dán endpoint vào đây. */
-      quoteFormEndpoint: 'https://formspree.io/f/xgawrroq',
+      quoteFormEndpoint: 'https://formspree.io/f/mwleaayd',
       mapEmbed: 'https://www.google.com/maps?q=998+Nguy%E1%BB%85n+Tr%C3%A3i,+Ph%C6%B0%E1%BB%9Dng+Ch%E1%BB%A3+L%E1%BB%9Bn,+TP.HCM&output=embed',
       stats: [
         { value: 30, suffix: '+', label: 'Năm kinh nghiệm từ 1995' },
