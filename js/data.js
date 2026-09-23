@@ -14,7 +14,7 @@
      này lên: bản lưu cũ trong localStorage của khách sẽ bị bỏ qua để họ thấy
      ngay nội dung mới, thay vì kẹt với bản cũ đã lưu từ trước. Dữ liệu lưu
      trên máy chủ (app.py) không bị ảnh hưởng. */
-  var CONTENT_VERSION = '2026-08-19.4';
+  var CONTENT_VERSION = '2026-08-19.5';
 
   var IMG = 'imagesP/';
 
@@ -58,7 +58,7 @@
     categories: [
       { id: 'personal-care', name: 'Hương cho Personal Care', desc: 'Hương cho dầu gội, sữa tắm, sữa rửa mặt, kem dưỡng da và các sản phẩm chăm sóc tóc, chăm sóc da.', image: IMG + 'prod-silk-hair.webp' },
       { id: 'home-care', name: 'Hương cho Home Care', desc: 'Hương cho nước giặt, nước xả, nước rửa chén, lau sàn, xịt tẩy rửa, nến thơm và tinh dầu khuếch tán không gian.', image: IMG + 'prod-calm-diffuser.webp' },
-      { id: 'fine-fragrance', name: 'Hương cho Fine Fragrance', desc: 'Hương cao cấp cho nước hoa (Eau de Parfum/Toilette) và body mist, theo xu hướng quốc tế.', image: IMG + 'prod-bloom-elegance.webp' },
+      { id: 'fine-fragrance', name: 'Hương cho Fine Fragrance', desc: 'Hương cao cấp cho nước hoa (Eau de Parfum/Toilette) và body mist, theo sát xu hướng quốc tế mới nhất.', image: IMG + 'prod-bloom-elegance.webp' },
       { id: 'incense', name: 'Hương cho Nhang – Trầm', desc: 'Dòng hương chuyên biệt dành riêng cho sản xuất nhang, trầm hương và các sản phẩm xông thơm truyền thống.', image: IMG + 'prod-noir-intense.webp' },
       { id: 'food', name: 'Hương cho Thực phẩm', desc: 'Hương cho kem, sữa, bánh kẹo, trà, kẹo dẻo, nước giải khát và các sản phẩm thực phẩm chế biến.', image: IMG + 'prod-strawberry-cream.webp' }
     ],
