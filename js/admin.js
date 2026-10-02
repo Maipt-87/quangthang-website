@@ -6,39 +6,13 @@
 (function () {
   'use strict';
 
-  /* Đây là lớp bảo mật THỨ HAI, chỉ để tiện dùng (nhớ 1 mật khẩu, không phải
-     nhập lại UI đăng nhập lạ). Lớp bảo mật THẬT nằm ở máy chủ: file .htaccess
-     ở gốc web yêu cầu HTTP Basic Auth (do Apache kiểm tra, không thể bỏ qua
-     bằng cách sửa JavaScript) trước khi trình duyệt tải được admin.html —
-     xem .htaccess và HUONG_DAN_BAO_MAT.md để biết cách cấu hình trên hosting.
-
-     Mật khẩu không để nguyên văn trong mã nguồn — chỉ lưu mã băm SHA-256 của
-     chuỗi 'QuangThang|<mật khẩu>'. Đổi mật khẩu: mở Console trình duyệt tại
-     trang này, chạy QTAdminHash('mật khẩu mới'), dán chuỗi nhận được vào
-     PASS_HASH bên dưới — VÀ nhớ tạo lại .htpasswd tương ứng trên hosting. */
-  var USER = 'Quang Thang';
-  var PASS_HASH = '7d07ddcff2745e62355588f104e8cc52b53fc0e13ca47523f463d32328d4b8d2';
-  var SESSION_KEY = 'quangthang_admin_session';
-
-  /** Băm mật khẩu bằng Web Crypto (khả dụng trên https và localhost). */
-  function hashPassword(pw) {
-    var data = new TextEncoder().encode('QuangThang|' + pw);
-    if (!window.crypto || !window.crypto.subtle) return Promise.resolve(null);
-    return window.crypto.subtle.digest('SHA-256', data).then(function (buf) {
-      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
-        return b.toString(16).padStart(2, '0');
-      }).join('');
-    });
-  }
-
-  // Tiện ích để quản trị viên tự tạo mã băm khi đổi mật khẩu
-  window.QTAdminHash = function (pw) {
-    return hashPassword(pw).then(function (h) {
-      console.log('PASS_HASH =', h);
-      return h;
-    });
-  };
-
+  /* Chỉ còn MỘT lớp bảo mật duy nhất cho trang quản trị: HTTP Basic Auth do
+     Apache kiểm tra ở máy chủ (.htaccess + .htpasswd), yêu cầu đăng nhập
+     trước khi trình duyệt tải được admin.html — không thể bỏ qua bằng cách
+     sửa JavaScript. Trước đây có thêm một lớp đăng nhập JS thứ hai, nhưng
+     vì chỉ mang tính tiện dùng (không phải bảo mật thật) và gây khó nhớ
+     2 mật khẩu khác nhau nên đã bỏ. Đổi mật khẩu: sửa .htpasswd trên
+     hosting qua cPanel File Manager. */
   var DATA = window.QTData.load();
   /* Danh sách ảnh thật trong imagesP/ để chọn khi thêm/sửa sản phẩm. */
   var IMAGE_POOL = [
@@ -104,51 +78,6 @@
     el.className = 'toast is-visible toast--' + (kind || 'ok');
     clearTimeout(toastTimer);
     toastTimer = setTimeout(function () { el.classList.remove('is-visible'); }, 3200);
-  }
-
-  /* ============================== ĐĂNG NHẬP =========================== */
-  function initLogin() {
-    var form = $('#login-form');
-    var alertBox = $('#login-alert');
-
-    if (sessionStorage.getItem(SESSION_KEY) === 'ok') return showAdmin();
-
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var u = $('#lg-user').value.trim();
-      var p = $('#lg-pass').value;
-      var btn = $('button[type="submit"]', form);
-      if (btn) btn.disabled = true;
-
-      hashPassword(p).then(function (hash) {
-        if (btn) btn.disabled = false;
-        if (u === USER && hash === PASS_HASH) {
-          sessionStorage.setItem(SESSION_KEY, 'ok');
-          showAdmin();
-          return;
-        }
-        alertBox.className = 'alert alert--err is-visible';
-        alertBox.textContent = hash === null
-          ? 'Trình duyệt không hỗ trợ kiểm tra mật khẩu. Hãy mở trang qua http://localhost hoặc https.'
-          : 'Tên đăng nhập hoặc mật khẩu không đúng.';
-        $('#lg-pass').value = '';
-        $('#lg-pass').focus();
-      });
-    });
-  }
-
-  function showAdmin() {
-    $('#login-screen').hidden = true;
-    $('#login-screen').style.display = 'none';
-    $('#admin-shell').hidden = false;
-    render('dashboard');
-  }
-
-  function initLogout() {
-    $('#logout-btn').addEventListener('click', function () {
-      sessionStorage.removeItem(SESSION_KEY);
-      location.reload();
-    });
   }
 
   /* ============================== ĐIỀU HƯỚNG ========================== */
@@ -1294,8 +1223,7 @@
 
   /* ============================== KHỞI TẠO ============================ */
   document.addEventListener('DOMContentLoaded', function () {
-    initLogin();
-    initLogout();
+    render('dashboard');
     initNav();
     initModal();
   });
