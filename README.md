@@ -57,14 +57,16 @@ hoặc commit thẳng lên GitHub nếu đã khai báo Token trong mục Cấu h
 cần tải ZIP mới và upload đè lên `public_html` qua cPanel thì ảnh mới hiện
 trên trang thật, vì hosting hiện tại không tự động build lại từ GitHub).
 
-**Đổi mật khẩu:** mở Console của trình duyệt tại trang admin, chạy
-`QTAdminHash('mật khẩu mới')`, rồi dán chuỗi nhận được vào `PASS_HASH` trong
-`js/admin.js`. Mật khẩu không bao giờ nằm nguyên văn trong mã nguồn.
+**Đăng nhập & đổi mật khẩu:** trang admin chỉ có MỘT lớp bảo mật duy nhất là
+HTTP Basic Auth do Apache kiểm tra ở máy chủ (cấu hình trong `.htaccess`, mật
+khẩu nằm trong file `.htpasswd` ở `/home/<user>/`, ngoài `public_html`). Trình
+duyệt hiện hộp thoại đăng nhập trước khi tải được `admin.html`; không còn form
+đăng nhập JavaScript thứ hai. Đổi mật khẩu bằng cách sửa file `.htpasswd` qua
+cPanel File Manager (hoặc dùng công cụ *Password Protect Directories*). Mật
+khẩu không nằm trong mã nguồn hay trên GitHub.
 
-⚠️ **Giới hạn của website tĩnh:** mọi kiểm tra đăng nhập đều chạy trong trình
-duyệt nên về nguyên tắc có thể bị vượt qua, và API của `app.py` không yêu cầu
-xác thực. Lớp này chỉ ngăn người ngoài vô tình sửa nội dung — muốn bảo mật
-nghiêm túc phải chuyển xác thực về máy chủ.
+⚠️ **Giới hạn khi chạy qua `app.py` (máy nội bộ):** API của `app.py` không yêu
+cầu xác thực — chỉ dùng trên máy tin cậy, không mở ra mạng công cộng.
 
 **Đưa nội dung admin lên website thật:** khi chạy qua `app.py`, nội dung sửa
 trong admin chỉ lưu ở `data/site-data.json` trên máy đang chạy — hosting hiện
